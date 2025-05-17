@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mindful Navigation | Wellness Within</title>
+    <style>
+        .not-found-container {
+            background: #f8f9fa;
+            display: flex;
+            align-items: center;
+            padding: 2rem;
+        }
+
+        .mindful-card {
+            background: white;
+            border-radius: 20px;
+            padding: 3rem;
+            text-align: center;
+            margin: 0 auto;
+            max-width: 600px;
+            box-shadow: 0 8px 30px rgba(92, 132, 120, 0.1);
+            border-left: 6px solid #5c8478;
+        }
+
+        .breathing-animation {
+            width: 120px;
+            height: 120px;
+            background: #5c8478;
+            border-radius: 50%;
+            margin: 2rem auto;
+            animation: breathe 6s infinite ease-in-out;
+        }
+
+        @keyframes breathe {
+            0%, 100% { transform: scale(0.9); opacity: 0.8; }
+            50% { transform: scale(1.1); opacity: 1; }
+        }
+
+        .not-found-title {
+            color: #406057;
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            font-weight: 600;
+        }
+
+        .mindful-message {
+            color: #5c8478;
+            font-size: 1.2rem;
+            line-height: 1.6;
+            margin: 2rem 0;
+        }
+
+        .navigation-links {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn-mindful {
+            background: #5c8478;
+            color: white !important;
+            padding: 12px 30px;
+            border-radius: 30px;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+        }
+
+        .btn-mindful:hover {
+            background: #406057;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(92, 132, 120, 0.3);
+        }
+
+        .leaf-decoration {
+            position: absolute;
+            opacity: 0.1;
+            pointer-events: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="not-found-container">
+        <div class="mindful-card">
+            <div class="breathing-animation"></div>
+            <h1 class="not-found-title">Breathe. It's Okay.</h1>
+            <p class="mindful-message">
+                Sometimes we all feel a little lost. This moment of pause can be your opportunity to:<br>
+                ✨ Center yourself<br>
+                ✨ Release tension<br>
+                ✨ Choose your next step mindfully
+            </p>
+            <div class="navigation-links">
+                <a href="/" class="btn-mindful">
+                    <i class="fas fa-home"></i> Return Home
+                </a>
+                <a href="/resources.html" class="btn-mindful">
+                    <i class="fas fa-heart"></i> Wellness Resources
+                </a>
+            </div>
+            <p class="text-muted mt-4" style="color: #5c8478;">
+                Error 404 · Page Not Found
+            </p>
+        </div>
+    </div>
+</body>
+</html>

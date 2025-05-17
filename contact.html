@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact | Wellness Within</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="canonical" href="https://wellnesswithin.africa/404.html"/>
+</head>
+<body>
+    <!-- Navigation (Keep existing) -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="index.html">
+                <img src="images/logo.png" alt="Wellness Within Logo" height="50">
+ 
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="index.html">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="resources.html">Resources</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="initiatives.html">Initiatives</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="contact.html">Contact</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <!-- Redesigned Page Header -->
+    <header class="mental-health-header py-5 mt-5">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-8 mx-auto text-center">
+                    <h1 class="text-white mb-4">Safe Connection</h1>
+                    <p class="lead text-white">Reach out in the way that feels most comfortable for you. We're here to listen.</p>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Contact Options Section -->
+    <section class="py-5 mental-health-contact">
+        <div class="container">
+            <div class="row g-4">
+            <!-- Emergency Notice -->
+            <div class="alert alert-safety mt-5 shadow-lg">
+                <h4 class="alert-heading"><i class="fas fa-life-ring me-2"></i>Immediate Help</h4>
+                <p>If you're in crisis right now, please call our emergency line: 
+                    <mobile style="color: #5c8478;"><strong>+255 783 885 351</strong></mobile> or visit the nearest healthcare facility.</p>
+            </div>
+                <!-- Request Callback Card -->
+                <div class="col-lg-6">
+                    <div class="card comfort-card h-100">
+                        <div class="card-body">
+                            <h3 class="h4 card-title mb-4"><i class="fas fa-phone-alt me-2"></i>Request a Call Back</h3>
+                            <p class="card-text mb-4">We'll call you at your preferred time. All conversations are confidential.</p>
+                            
+                            <form id="callbackForm">
+                                <div class="mb-3">
+                                    <label for="name" class="form-label">Your Name</label>
+                                    <input type="text" class="form-control comfort-input" id="name" 
+                                           placeholder="How should we call you?" required>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="phone" class="form-label">Phone Number</label>
+                                    <input type="tel" class="form-control comfort-input" id="phone" 
+                                           placeholder="+255 XXX XXX XXX" required>
+                                </div>
+                                <div class="mb-4">
+                                    <label for="supportType" class="form-label">I'd like to talk about</label>
+                                    <select class="form-select comfort-input" id="supportType" required>
+                                        <option value="">Choose support type</option>
+                                        <option>Anxiety & Stress</option>
+                                        <option>Academic Pressure</option>
+                                        <option>Relationship Matters</option>
+                                        <option>Just Need to Talk</option>
+                                        <option>Other</option>
+                                    </select>
+                                </div>
+                                <button type="submit" class="btn btn-comfort w-100 py-2">
+                                    Request Call Back
+                                </button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- WhatsApp Helpline Card -->
+                <div class="col-lg-6">
+                    <div class="card comfort-card h-100">
+                        <div class="card-body">
+                            <h3 class="h4 card-title mb-4"><i class="fab fa-whatsapp me-2"></i>WhatsApp Support</h3>
+                            <p class="card-text mb-4">Message us directly. Available 24/7 for urgent concerns.</p>
+                            
+                            <div class="whatsapp-options">
+                                <div class="mb-3">
+                                    <label class="form-label">I need help with:</label>
+                                    <div class="d-grid gap-2">
+                                        <button type="button" class="btn btn-whatsapp-option" 
+                                                data-issue="Crisis Support">
+                                            <i class="fas fa-exclamation-triangle me-2"></i>Urgent Help
+                                        </button>
+                                        <button type="button" class="btn btn-whatsapp-option" 
+                                                data-issue="General Inquiry">
+                                            <i class="fas fa-question-circle me-2"></i>General Question
+                                        </button>
+                                        <button type="button" class="btn btn-whatsapp-option" 
+                                                data-issue="Resource Request">
+                                            <i class="fas fa-book-open me-2"></i>Find Resources
+                                        </button>
+                                    </div>
+                                </div>
+                                
+                                <div class="mb-3">
+                                    <label for="message" class="form-label">Your Message</label>
+                                    <textarea class="form-control comfort-input" id="message" 
+                                              rows="3" placeholder="Share what's on your mind..."></textarea>
+                                </div>
+                                
+                                <button id="startChat" class="btn btn-success w-100 py-2">
+                                    <i class="fab fa-whatsapp me-2"></i>Start WhatsApp Chat
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Keep existing footer -->
+    <footer class="py-5 text-white" style="background-color: #664234;">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-4 mb-4 mb-lg-0">
+                    <h3 class="h5">Wellness Within</h3>
+                    <p>Nurturing, protecting and celebrating student mental health across Tanzania.</p>
+                </div>
+                <div class="col-lg-4 mb-4 mb-lg-0">
+                    <h3 class="h5">Contact Us</h3>
+                    <p>General Inquiries:<br>
+                    <a href="mailto:info@wellnesswithin.africa" class="text-white">info@wellnesswithin.africa</a><br>
+                    <a href="tel:+255XXXXXXXX" class="text-white" style="text-decoration:none;">+255 783 885 351</a></p>
+                    <p>WhatsApp Helpline:<br>
+                    <a href="#" class="btn btn-sm btn-comfort mt-2">Start WhatsApp Chat →</a></p>
+                </div>
+                <div class="col-lg-4">
+                    <h3 class="h5">Follow Us</h3>
+                    <div class="social-links">
+                        <a href="#" class="text-white me-3"><i class="fab fa-linkedin fa-2x"></i></a>
+                        <a href="#" class="text-white me-3"><i class="fab fa-twitter fa-2x"></i></a>
+                        <a href="#" class="text-white"><i class="fab fa-instagram fa-2x"></i></a>
+                    </div>
+                </div>
+            </div>
+            <hr class="my-4">
+            <div class="text-center">
+                <p class="mb-0">&copy; 2025 Wellness Within Organization. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+    <!-- CSS -->
+    <style>
+        /* Unified Button Styles */
+        .btn-comfort,
+        .initiative-btn,
+        .get-involved-btn {
+            transition: all 0.3s ease !important;
+            border: 1px solid transparent;
+        }
+    
+        /* Primary Contact Button */
+        .btn-comfort,
+        .whatsapp-btn {
+            background: #5c8478 !important;
+            color: #ffffff !important;
+            border-radius: 8px;
+            padding: 12px 24px;
+            transition: all 0.3s ease;
+        }
+        .btn-comfort, .whatsapp-btn:hover {
+            background: #538475 !important;
+            transform: translateY(-1px);
+            box-shadow: 0 5px 15px rgba(92, 132, 120, 0.3);
+        }
+    
+        /* WhatsApp Options */
+        .btn-whatsapp-option {
+            background: #f8f9fa !important;
+            color: #5c8478 !important;
+            border: 1px solid #5c8478 !important;
+            text-align: left;
+            transition: all 0.3s ease;
+        }
+        .btn-whatsapp-option:hover,
+        .btn-whatsapp-option.active {
+            background: #5c8478 !important;
+            color: #ffffff !important;
+        }
+    
+        .alert-safety {
+            background: #f8f9fa;
+            border-left: 4px solid #5c8478;
+            border-top: 1px solid rgba(92, 132, 120, 0.2);  /* New subtle top border */
+            border-bottom: 1px solid rgba(92, 132, 120, 0.2);  /* New subtle top border */
+            border-right: 1px solid rgba(92, 132, 120, 0.2);  /* New subtle top border */
+            border-radius: 8px;
+            color: #406057;
+            box-shadow: 0 -4px 8px -4px rgba(0,0,0,0.05),  /* Top shadow */
+                        4px 0 8px -4px rgba(0,0,0,0.1),    /* Right shadow */
+                        0 4px 8px -4px rgba(0,0,0,0.1);     /* Bottom shadow */
+        }
+        .comfort-card {
+            background: #f8f9fa;
+            border-top: 1px solid rgba(92, 132, 120, 0.2);  /* New subtle top border */
+            border-bottom: 1px solid rgba(92, 132, 120, 0.2);  /* New subtle top border */
+            border-right: 1px solid rgba(92, 132, 120, 0.2);  /* New subtle top border */
+            border-left: 1px solid rgba(92, 132, 120, 0.2);  /* New subtle top border */
+            border-radius: 8px;
+            box-shadow: 0 4px 8px -4px rgba(0,0,0,0.1),  /* Bottom shadow */
+                        4px 0 8px -4px rgba(0,0,0,0.1),    /* Right shadow */
+                        0 -4px 8px -4px rgba(0,0,0,0.05);   /* Top shadow */
+        }
+    
+        /* Consistent Form Styling */
+        .comfort-input {
+            border: 1px solid #5c8478 !important;
+            border-radius: 8px;
+            padding: 12px;
+            transition: border-color 0.3s ease;
+        }
+        .comfort-input:focus {
+            border-color: #406057 !important;
+            box-shadow: 0 0 0 3px rgba(92, 132, 120, 0.25);
+        }
+    
+        /* Header Gradient */
+        .mental-health-header {
+            background: linear-gradient(135deg, #5c8478 0%, #406057 100%);
+        }
+    </style>
+
+    <!-- Add this JavaScript -->
+    <script>
+        document.getElementById('callbackForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const name = document.getElementById('name').value;
+            const phone = document.getElementById('phone').value;
+            const issue = document.getElementById('supportType').value;
+            
+            const message = `Hello, I'm ${encodeURIComponent(name)} (${encodeURIComponent(phone)}). 
+I'd like to request a callback about: ${encodeURIComponent(issue)}.`;
+            
+            window.open(`https://wa.me/255622387189?text=${message}`, '_blank');
+        });
+
+        document.getElementById('startChat').addEventListener('click', function() {
+            const issue = document.querySelector('.btn-whatsapp-option.active')?.dataset.issue || 'General Inquiry';
+            const customMessage = document.getElementById('message').value;
+            
+            const fullMessage = `Hello, I'd like to talk about ${encodeURIComponent(issue)}. 
+My message: ${encodeURIComponent(customMessage)}`;
+            
+            window.open(`https://wa.me/255622387189?text=${fullMessage}`, '_blank');
+        });
+
+        // Add active state to options
+        document.querySelectorAll('.btn-whatsapp-option').forEach(btn => {
+            btn.addEventListener('click', function() {
+                document.querySelectorAll('.btn-whatsapp-option').forEach(b => b.classList.remove('active'));
+                this.classList.add('active');
+            });
+        });
+    </script>
+</body>
+</html>
