@@ -57,8 +57,8 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .outline {
-    color: #5c8478;
-    border-color: #5c8478;
+    color: #16a278;
+    border-color: #16a278;
 }
 
 .outline:hover {
@@ -292,7 +292,7 @@ footer .social-links a:hover {
 
 
 .explore-btn {
-    background-color: #5c8478;
+    background-color: #16a278;
     color: #ffffff;
     border: none;
     transition: background-color 0.3s, color 0.3s;
@@ -304,12 +304,12 @@ footer .social-links a:hover {
 }
 .get-involved-btn {
     background-color: transparent;
-    color: #5c8478;
-    border: 1px solid #5c8478;
+    color: #16a278;
+    border: 1px solid #16a278;
     transition: background-color 0.3s, color 0.3s;
 }
 .get-involved-btn:hover {
-    background-color: #5c8478;
+    background-color: #16a278;
     color: #ffffff !important;
 }
 .hero {
@@ -317,7 +317,7 @@ footer .social-links a:hover {
         background-size: cover;
     }
 .initiative-btn {
-    background-color: #5c8478;
+    background-color: #16a278;
     color: #ffffff;
     border: none;
     transition: background-color 0.3s, color 0.3s;
