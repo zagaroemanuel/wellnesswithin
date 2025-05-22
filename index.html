@@ -42,11 +42,11 @@
 
     <!-- Hero Section -->
 <!-- Hero Section -->
-<section class="hero pt-5">
+<section class="hero py-5">
     <div class="container">
         <div class="row align-items-center min-vh-100">
             <!-- Text Content -->
-            <div class="col-lg-6">
+            <div class="col-lg-6 mt-5">
                 <h1>Everyone deserves good mental health</h1>
                 <p class="lead">We nurture, protect and celebrate student mental health across Tanzania.</p>
                 <p>Equipping Tanzanian youth with the tools, training, and community support they need to thrive - mentally, emotionally, and socially.</p>
@@ -57,12 +57,20 @@
                     </a>
                 </div>
 
-                <!-- Partner Logo (Add your image path here) -->
-                <div class="mt-5 partner">
-                    <p class="fw-bold mb-2">Our Partners:</p>
-                    <img src="images/AAPHlogo.png" alt="Partner Logo" class="img-fluid" style="max-height: 60px;">
-                    <img src="images/tapa.png" alt="Partner Logo" class="img-fluid" style="max-height: 60px;">
+                <!-- Partner Logo (Visible on large screens and above only) -->
+                <div class="d-none d-lg-flex flex-wrap align-items-center gap-4 mt-4 partner">
+                    <p class="lead mb-0" style="color: #555;">We are trusted by:</p>
+                    
+                    <div style="flex: 0 0 30%; max-width: 30%;">
+                        <img src="images/AAPHlogo.png" alt="Partner Logo" class="img-fluid" style="max-height: 60px;">
+                    </div>
+                    
+                    <div style="flex: 0 0 30%; max-width: 30%;">
+                        <img src="images/tapa.png" alt="Partner Logo" class="img-fluid" style="max-height: 60px;">
+                    </div>
                 </div>
+
+
             </div>
 
             <!-- Hero Image -->
@@ -74,12 +82,12 @@
 </section>
 
 <style>
-    .partner>img {
+    .partner>div>img {
         filter: grayscale(100%);
         opacity: 0.7;
         transition: opacity 0.3s ease;
     }
-    .partner>img:hover {
+    .partner>div>img:hover {
         opacity: 1;
         filter: none;
     }
@@ -137,7 +145,7 @@
     <section class="py-5 mental-health-contact" style="background-image: url('images/section-bg.jpg'); background-size: cover;">
         <div class="container">
             <div class="text-center">
-                <h3>Need Help?</h3>
+                <h3 class="section-title">Need Help?</h3>
                 <div>
                     <!-- Add lead -->
                      <p class="lead">Reach out in the way that feels most comfortable for you.</p>
@@ -303,9 +311,10 @@
     </section>
 
     <!-- Who we are Section -->
-    <section class="py-5 bg-light">
-        <div class="container">
-            <h2 class="text-center mb-5">Wellness Within At a Glance</h2>
+    <div class="section-container">
+        <div class="section-header">
+            <h2 class="section-title">Wellness Within At a Glance</h2>
+        </div>
             <div class="row g-0 justify-content-center">
                 <div class="col-md-6 col-lg-3">
                     <div class="card h-100 audience-card">
@@ -351,6 +360,9 @@
             </div>
         </div>
         <style>
+            .section-title {
+            text-align: center;
+            }
 
             .audience-card {
                 border-radius: 0px;
@@ -371,182 +383,392 @@
         </style>
     </section>
 
+<style>
+  .section-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 60px 20px;
+  }
 
-    <!-- Why It Matters Section -->
-    <section class="py-5" style="background-image: url('images/section-bg.jpg'); background-size: cover;">
-        <div class="container">
-            <div class="row align-items-center">
-                <div class="col-lg-6">
-                    <h2 class="mb-4">Why It Matters</h2>
-                    <p>At Wellness Within Hub, we believe mental well-being is not a luxury—it is a right. Mental health is essential to building thriving individuals and resilient communities.</p>
-                    <ul class="why-matters-list">
-                        <li>
-                            <strong>Mental health shapes our lives</strong>
-                            <p> it affects how we think, feel, connect with others, and function daily. According to the WHO, 1 in 8 people globally live with a mental health condition, yet many do not receive support.</p>
-                        </li>
-                        <li>
-                            <strong>Stigma and limited support hold people back</strong>
-                            <p>especially youth. In Sub-Saharan Africa, over 75% of people with mental health disorders receive no treatment at all, largely due to stigma and lack of services.</p>
-                        </li>
-                        <li>
-                            <strong>Investing in mental health changes lives</strong>
-                            <p>for every $1 invested in mental health interventions, there is a $5 return in improved health and productivity (WHO). Empowered individuals create healthier families, schools, and communities.</p>
-                        </li>
-                    </ul>
-                </div>
-                <div class="col-lg-6">
-                    <img src="images/stress.jpg" alt="Students in discussion" class="img-fluid rounded">
-                </div>
-            </div>
+  .section-header {
+    text-align: center;
+    margin-bottom: 50px;
+  }
+
+  .section-title {
+    font-size: 2.5rem;
+    color: #333; /* Replaces --primary-color */
+    margin-bottom: 20px;
+    font-weight: 700;
+    position: relative;
+    display: inline-block;
+  }
+
+  .section-title::after {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80px;
+    height: 3px;
+    background: linear-gradient(90deg, #28a745, #25b87e); /* Replaces --gradient */
+  }
+
+  .section-subtitle {
+    font-size: 1.1rem;
+    color: #333;
+    max-width: 800px;
+    margin: 0 auto;
+    line-height: 1.6;
+  }
+
+  .cards-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+  }
+
+  .impact-card {
+    background: white;
+    border-radius: 16px;
+    padding: 30px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .impact-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, #28a745, #25b87e); /* Gradient */
+  }
+
+  .impact-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1);
+  }
+
+  .card-icon {
+    width: 60px;
+    height: 60px;
+    background: linear-gradient(90deg, #28a745, #25b87e);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 1.8rem;
+    margin-bottom: 25px;
+    transition: transform 0.3s ease;
+  }
+
+  .impact-card:hover .card-icon {
+    transform: scale(1.1);
+  }
+
+  .card-title {
+    font-size: 1.4rem;
+    color: #333;
+    margin-bottom: 15px;
+    font-weight: 600;
+  }
+
+  .card-description {
+    color: #333;
+    line-height: 1.6;
+    margin-bottom: 20px;
+    font-size: 0.95rem;
+  }
+
+  .card-stat {
+    background: #f7fafc;
+    padding: 15px;
+    border-radius: 8px;
+    border-left: 4px solid #48bb78; /* Replaces --accent-color */
+  }
+
+  .stat-number {
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: #48bb78;
+    display: block;
+  }
+
+  .stat-label {
+    color: #4a5568;
+    font-size: 0.9rem;
+    margin-top: 5px;
+  }
+
+  @media (max-width: 768px) {
+    .section-container {
+      padding: 40px 15px;
+    }
+
+    .section-title {
+      font-size: 2rem;
+    }
+
+    .cards-grid {
+      grid-template-columns: 1fr;
+      gap: 25px;
+    }
+
+    .impact-card {
+      padding: 25px;
+    }
+  }
+</style>
+
+<div class="section-container">
+  <div class="section-header">
+    <h2 class="section-title">Why It Matters</h2>
+    <p class="section-subtitle">
+      At Wellness Within Hub, we believe mental well-being is not a luxury — it's a right. 
+      Mental health is essential to building thriving individuals and resilient communities.
+    </p>
+  </div>
+
+  <div class="cards-grid">
+    <!-- Card 1 -->
+    <div class="impact-card">
+      <div class="card-icon">
+        <i class="fas fa-brain"></i>
+      </div>
+      <h3 class="card-title">Mental Health Shapes Our Lives</h3>
+      <p class="card-description">
+        It affects how we think, feel, connect with others, and function daily. Mental health is the foundation of our overall well-being and quality of life.
+      </p>
+      <div class="card-stat">
+        <span class="stat-number">1 in 8</span>
+        <div class="stat-label">people globally live with a mental health condition (WHO)</div>
+      </div>
+    </div>
+
+    <!-- Card 2 -->
+    <div class="impact-card">
+      <div class="card-icon">
+        <i class="fas fa-triangle-exclamation"></i>
+      </div>
+      <h3 class="card-title">Breaking Down Barriers</h3>
+      <p class="card-description">
+        Stigma and limited support hold people back, especially youth. Many who need help don't receive it due to societal barriers and lack of accessible services.
+      </p>
+      <div class="card-stat">
+        <span class="stat-number">75%+</span>
+        <div class="stat-label">of people in Sub-Saharan Africa with mental health disorders receive no treatment</div>
+      </div>
+    </div>
+
+    <!-- Card 3 -->
+    <div class="impact-card">
+      <div class="card-icon">
+        <i class="fas fa-chart-line"></i>
+      </div>
+      <h3 class="card-title">Return on Investment</h3>
+      <p class="card-description">
+        For every <strong>$1 invested</strong> in mental health interventions, 
+        there is a <strong>$5 return</strong> in improved health and productivity. 
+        This isn't just about numbers—it's about transforming lives and building stronger communities.
+      </p>
+      <div class="card-stat">
+        <span class="stat-number">$5</span>
+        <div class="stat-label">return on investment for every $1 spent on mental health interventions (WHO)</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+<!-- Initiatives Preview -->
+<section class="py-5 bg-light">
+  <div class="section-header text-center mb-4">
+    <h2 class="section-title">Flagship Initiatives</h2>
+  </div>
+
+  <div class="initiatives-container">
+    <!-- Card Start -->
+    <div class="initiative-card">
+      <div class="card-image">
+        <span class="badge badge-ongoing">Ongoing</span>
+        <img src="images/paint.jpg" alt="Beach Art Therapy">
+      </div>
+      <div class="card-content">
+        <h3 class="card-title">
+          <a href="initiatives.html#art-therapy">Beach-Side Art Therapy</a>
+        </h3>
+        <div class="card-meta">
+          <span><i class="far fa-calendar-alt"></i> Quarterly Sessions</span>
+          <span><i class="fas fa-coins"></i> 10,000 TZS</span>
         </div>
-    </section>
+        <div class="card-cta">
+          <a href="initiatives.html#art-therapy" class="cta-link">
+            Register Now <i class="fas fa-arrow-right"></i>
+          </a>
+        </div>
+      </div>
+    </div>
 
-    <!-- Initiatives Preview -->
-    <section class="py-5 bg-light">
-        <h2 class="text-center mb-5">Flagship Initiatives</h2>
-        <div class="container">
-                <!-- Beach-Side Art Therapy Card -->
-                <div class="card1">
-                    <div class="card-image">
-                        <img src="images/paint.jpg" alt="Beach Art Therapy">
-                    </div>
-                    <div class="card1-content">
-                        <h3 class="card1-title">
-                            <a href="initiatives.html#art-therapy">Beach-Side Art Therapy</a>
-                        </h3>
-                        <div class="card1-meta">
-                        <span class="calendar-icon"><i class="far fa-calendar-alt"></i></span>
-                        <span>Quarterly Sessions</span>
-                        </div>
-                        <div class="card-cta">
-                        <a href="initiatives.html#art-therapy" class="cta-link">
-                            Register Now
-                            <i class="fas fa-arrow-right"></i>
-                        </a>
-                        </div>
-                </div>
-                </div>
-                <!-- Mental Health Project Card -->
-                <div class="card1">
-                    <div class="card-image">
-                        <img src="images/studenthappy.jpg" alt="Mental Health Awareness">
-                    </div>
-                    <div class="card1-content">
-                        <h3 class="card1-title">
-                            <a href="initiatives.html#mental-health">Mental Health for Everyone</a>
-                            </h3>
-                        <div class="card1-meta">
-                        <span class="calendar-icon"><i class="far fa-calendar-alt"></i></span>
-                        <span>Quarterly Programs</span>
-                        </div>
-                        <div class="card-cta">
-                        <a href="initiatives.html#mental-health" class="cta-link">
-                            Become a Sponsor
-                            <i class="fas fa-arrow-right"></i>
-                        </a>
-                        </div>
-                    </div>
-                </div>
-                <!-- Pause & Breathe Card -->
-                <div class="card1">
-                    <div class="card-image">
-                        <img src="images/peer.jpg" alt="Pause & Breathe">
-                    </div>
-                    <div class="card1-content">
-                        <h3 class="card1-title">
-                            <a href="initiatives.html#pause-breathe">Pause & Breathe</a>
-                        </h3>
-                        <div class="card1-meta">
-                        <span class="calendar-icon"><i class="far fa-calendar-alt"></i></span>
-                        <span>Monthly Sessions</span>
-                    </div>
-                    <div class="card-cta">
-                        <a href="initiatives.html#pause-breathe" class="cta-link">
-                            Join Us <i class="fas fa-arrow-right"></i>
-                        </a>
-                    </div>
-                </div>
-            </div>
-            <style>
-                .container {
-                display: flex;
-                flex-wrap: wrap;
-                justify-content: center;
-                gap: 30px;
-                max-width: 1200px;
-                margin: 0 auto;
-                }
-                
-                .card1 {
-                background-color: white;
-                border-radius: 4px;
-                box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-                overflow: hidden;
-                width: 100%;
-                max-width: 350px;
-                transition: transform 0.3s ease, box-shadow 0.3s ease;
-                }
-                
-                .card1:hover {
-                transform: translateY(-5px);
-                box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
-                }
-                
-                .card-image>img {
-                    width: 350px; height: 200px; object-fit: cover; max-width: 100%;
-                }
-                
-                .card1-content {
-                padding: 25px;
-                text-align: center;
-                }
+    <div class="initiative-card">
+      <div class="card-image">
+        <span class="badge badge-upcoming">Coming Soon</span>
+        <img src="images/studenthappy.jpg" alt="Mental Health Awareness">
+      </div>
+      <div class="card-content">
+        <h3 class="card-title">
+          <a href="initiatives.html#mental-health">Mental Health for Everyone</a>
+        </h3>
+        <div class="card-meta">
+          <span><i class="far fa-calendar-alt"></i> Quarterly Programs</span>
+          <span><i class="fas fa-coins"></i> Free</span>
+        </div>
+        <div class="card-cta">
+          <a href="initiatives.html#mental-health" class="cta-link">
+            Become a Sponsor <i class="fas fa-arrow-right"></i>
+          </a>
+        </div>
+      </div>
+    </div>
 
-                .card1-content>h3>a {
-                text-decoration: none;
-                color: #333;
-                font-weight: 600;
-                }
-                .card1-content>h3>a:hover {
-                color: #25b87e;
-                }
-                
-                .card1-title {
-                margin: 0 0 15px 0;
-                color: #1a365d;
-                font-size: 1.25rem;
-                }
-                
-                .card1-meta {
-                display: flex;
-                align-items: center;
-                justify-content: center;
-                gap: 8px;
-                margin-bottom: 20px;
-                color: #555;
-                }
-                
-                .calendar-icon {
-                color: #16a278;
-                font-size: 1.2rem;
-                }
-                
-                .card-cta {
-                border-top: 1px solid #eee;
-                padding-top: 20px;
-                }
-                
-                .cta-link {
-                color: #1a365d;
-                text-decoration: none;
-                font-weight: 600;
-                transition: color 0.3s ease;
-                }
-                
-                .cta-link:hover {
-                color: #16a278;
-                }
-            </style>
-    </section>
+    <div class="initiative-card">
+      <div class="card-image">
+        <span class="badge badge-ongoing">Ongoing</span>
+        <img src="images/peer.jpg" alt="Pause & Breathe">
+      </div>
+      <div class="card-content">
+        <h3 class="card-title">
+          <a href="initiatives.html#pause-breathe">Pause & Breathe</a>
+        </h3>
+        <div class="card-meta">
+          <span><i class="far fa-calendar-alt"></i> Monthly Sessions</span>
+          <span><i class="fas fa-coins"></i> Free</span>
+        </div>
+        <div class="card-cta">
+          <a href="initiatives.html#pause-breathe" class="cta-link">
+            Join Us <i class="fas fa-arrow-right"></i>
+          </a>
+        </div>
+      </div>
+    </div>
+    <!-- Card End -->
+  </div>
+
+  <style>
+    /* Utility Classes */
+    .text-center { text-align: center; }
+    .mb-4 { margin-bottom: 1.5rem; }
+
+    /* Grid Container */
+    .initiatives-container {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 30px;
+      justify-content: center;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    /* Card Base */
+    .initiative-card {
+      background-color: #fff;
+      border-radius: 6px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      overflow: hidden;
+      width: 100%;
+      max-width: 350px;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .initiative-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    }
+
+    /* Badge */
+    .badge {
+      position: absolute;
+      top: 20px;
+      left: 20px;
+      padding: 5px 10px;
+      border-radius: 5px;
+      font-size: 14px;
+      font-weight: bold;
+      color: white;
+    }
+
+    .badge-ongoing { background-color: green; }
+    .badge-upcoming { background-color: orange; }
+
+    .card-image {
+      position: relative;
+    }
+
+    .card-image img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+    }
+
+    /* Card Content */
+    .card-content {
+      padding: 25px;
+      text-align: center;
+    }
+
+    .card-title {
+      font-size: 1.25rem;
+      margin-bottom: 15px;
+    }
+
+    .card-title a {
+      color: #1a365d;
+      text-decoration: none;
+      font-weight: 600;
+    }
+
+    .card-title a:hover {
+      color: #25b87e;
+    }
+
+    .card-meta {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      margin-bottom: 15px;
+      color: #555;
+      font-size: 0.95rem;
+    }
+
+    .card-meta i {
+      color: #16a278;
+      margin-right: 6px;
+    }
+
+    .card-cta {
+      border-top: 1px solid #eee;
+      padding-top: 20px;
+    }
+
+    .cta-link {
+      color: #1a365d;
+      font-weight: 600;
+      text-decoration: none;
+      transition: color 0.3s ease;
+    }
+
+    .cta-link:hover {
+      color: #16a278;
+    }
+  </style>
+</section>
+
 
     <!-- Core Resources Preview -->
     <section class="py-5" style="background-image: url('images/section-bg.jpg'); background-size: cover;">
