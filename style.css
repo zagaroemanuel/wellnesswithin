@@ -1,8 +1,8 @@
 :root {
     /* Core brand colors */
-    --primary:        #5a857c;  /* Primary green */
+    --primary:        #5F6C59;  /* Primary green */
     --primary-dark:   #47645d;  /* Darker green */
-    --primary-light:  #8ba992;  /* Lighter green */
+    --primary-light:  #5F6C59;  /* Lighter green */
 
     --secondary:      #664234;  /* Brown accent */
     --secondary-dark: #4d321f;  /* Darker brown */
@@ -57,8 +57,8 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .outline {
-    color: #16a278;
-    border-color: #16a278;
+    color: #5F6C59;
+    border-color: #5F6C59;
 }
 
 .outline:hover {
@@ -113,25 +113,25 @@ footer {
 
 /* Buttons */
 .btn-primary {
-    background-color: #5a857c;
-    border-color: #5a857c;
+    background-color: #5F6C59;
+    border-color: #5F6C59;
 }
 .bat {
-    background-color: #5a857c;
-    border-color: #5a857c;
+    background-color: #5F6C59;
+    border-color: #5F6C59;
 }
 .bat:hover {
-    background-color: #5a857c;
-    border-color: #5a857c;
+    background-color: #5F6C59;
+    border-color: #5F6C59;
 }
 
 .bat-outline-primary {
-    color: #5a857c;
-    border-color: #5a857c;
+    color: #5F6C59;
+    border-color: #5F6C59;
 }
 .bat-outline-primary:hover {
-    background-color: #5a857c;
-    border-color: #5a857c;
+    background-color: #5F6C59;
+    border-color: #5F6C59;
     color: #ffffff;
 }
 
@@ -141,13 +141,13 @@ footer {
 }
 
 .btn-outline-primary {
-    color: #5a857c;
-    border-color: #5a857c;
+    color: #5F6C59;
+    border-color: #5F6C59;
 }
 
 .btn-outline-primary:hover {
-    background-color: #5a857c;
-    border-color: #5a857c;
+    background-color: #5F6C59;
+    border-color: #5F6C59;
     color: #ffffff;
 }
 
@@ -292,7 +292,7 @@ footer .social-links a:hover {
 
 
 .explore-btn {
-    background-color: #16a278;
+    background-color: #5F6C59;
     color: #ffffff;
     border: none;
     transition: background-color 0.3s, color 0.3s;
@@ -304,12 +304,12 @@ footer .social-links a:hover {
 }
 .get-involved-btn {
     background-color: transparent;
-    color: #16a278;
-    border: 1px solid #16a278;
+    color: #5F6C59;
+    border: 1px solid #5F6C59;
     transition: background-color 0.3s, color 0.3s;
 }
 .get-involved-btn:hover {
-    background-color: #16a278;
+    background-color: #5F6C59;
     color: #ffffff !important;
 }
 .hero {
@@ -317,7 +317,7 @@ footer .social-links a:hover {
         background-size: cover;
     }
 .initiative-btn {
-    background-color: #16a278;
+    background-color: #5F6C59;
     color: #ffffff;
     border: none;
     transition: background-color 0.3s, color 0.3s;
