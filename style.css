@@ -8,7 +8,7 @@
     --secondary-dark: #4d321f;  /* Darker brown */
     --secondary-light:#997a6b;  /* Light brown */
 
-    --tertiary:       #dfb64d;  /* Gold highlight */
+    --tertiary:       #664234;  /* Gold highlight */
     --tertiary-dark:  #b8933e;  /* Dark gold */
     --tertiary-light: #f0d58e;  /* Light gold */
 
@@ -88,7 +88,7 @@ footer {
 }
 
 .social-links a:hover {
-    color: var(--tertiary) !important;
+    color: var(--white) !important;
 }
 
 /* Hero Section */
@@ -334,4 +334,9 @@ footer .social-links a:hover {
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
     background-color: #f8f9fa;
     color: #333;
+}
+
+footer {
+    background-color: #664234; !important;
+    color: #ffffff;
 }

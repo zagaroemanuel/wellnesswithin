@@ -3,12 +3,350 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Wellness Within | Mental Health for Students in Tanzania</title>
+    <title>Wellness Within | Mental Health Resources</title>
     <link rel="icon" type="image/png" href="images/favicon.png">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <link rel="stylesheet" href="css/styles.css">
-    <link rel="canonical" href="https://wellnesswithin.africa/404.html"/>
+    <style>
+        :root {
+            --primary: #5F6C59;
+            --primary-dark: #47645d;
+            --secondary: #664234;
+            --secondary-dark: #4d321f;
+            --tertiary: #664234;
+            --white: #ffffff;
+            --light: #f8f9fa;
+            --dark: #343a40;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            padding-top: 76px;
+            color: #333;
+            background-color: var(--light);
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            color: var(--secondary);
+            font-weight: 600;
+        }
+
+        .navbar-brand {
+            color: var(--primary) !important;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+        }
+
+        .navbar-light .navbar-nav .nav-link {
+            color: var(--secondary);
+            font-weight: 500;
+        }
+
+        .navbar-light .navbar-nav .nav-link:hover,
+        .navbar-light .navbar-nav .nav-link.active {
+            color: var(--primary);
+        }
+
+        /* Custom Tab Styling */
+        .custom-tabs {
+            border-bottom: 3px solid var(--primary);
+            margin-bottom: 2rem;
+        }
+
+        .custom-tabs .nav-link {
+            background-color: transparent;
+            border: none;
+            color: var(--secondary);
+            font-weight: 600;
+            padding: 1rem 2rem;
+            border-radius: 0;
+            position: relative;
+            transition: all 0.3s ease;
+        }
+
+        .custom-tabs .nav-link:hover {
+            color: var(--primary);
+            background-color: rgba(95, 108, 89, 0.1);
+        }
+
+        .custom-tabs .nav-link.active {
+            color: var(--primary);
+            background-color: var(--white);
+            border-bottom: 3px solid var(--primary);
+            margin-bottom: -3px;
+        }
+
+        /* Resource Cards */
+        .resource-card {
+            border-radius: 15px;
+            border: none;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            background-color: var(--white);
+            height: 100%;
+        }
+
+        .resource-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
+        }
+
+        /* Podcast Styling */
+        .podcast-card {
+            background-color: var(--white);
+            border-radius: 15px;
+            padding: 1.5rem;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            margin-bottom: 2rem;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .podcast-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
+        }
+
+        .podcast-embed {
+            border-radius: 12px;
+            overflow: hidden;
+            margin-top: 1rem;
+        }
+
+        /* Custom Audio Player Styling */
+        .custom-audio-player {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border-radius: 12px;
+            padding: 1rem;
+            color: white;
+            margin-top: 1rem;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .custom-audio-player .player-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+        
+        .custom-audio-player .player-header .play-icon {
+            background-color: rgba(255, 255, 255, 0.2);
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 10px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .custom-audio-player .player-header .play-icon:hover {
+            background-color: rgba(255, 255, 255, 0.3);
+        }
+        
+        .custom-audio-player .player-header .podcast-title {
+            font-weight: 600;
+            font-size: 0.95rem;
+            flex-grow: 1;
+        }
+        
+        .custom-audio-player .player-header .duration {
+            font-size: 0.85rem;
+            opacity: 0.8;
+        }
+        
+        .custom-audio-player .progress-container {
+            background: rgba(255, 255, 255, 0.2);
+            height: 4px;
+            border-radius: 2px;
+            margin: 10px 0;
+            cursor: pointer;
+            position: relative;
+        }
+        
+        .custom-audio-player .progress-bar {
+            background-color: var(--tertiary);
+            height: 100%;
+            width: 0%;
+            border-radius: 2px;
+            position: relative;
+        }
+        
+        .custom-audio-player .progress-bar::after {
+            content: '';
+            position: absolute;
+            right: -5px;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 10px;
+            height: 10px;
+            background-color: white;
+            border-radius: 50%;
+        }
+        
+        .custom-audio-player .time-info {
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.8rem;
+            opacity: 0.8;
+        }
+        
+        .custom-audio-player .player-controls {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 15px;
+        }
+        
+        .custom-audio-player .player-controls .control-btn {
+            background: transparent;
+            border: none;
+            color: white;
+            font-size: 1.2rem;
+            cursor: pointer;
+            padding: 5px;
+            opacity: 0.8;
+            transition: all 0.3s ease;
+        }
+        
+        .custom-audio-player .player-controls .control-btn:hover {
+            opacity: 1;
+            transform: scale(1.1);
+        }
+        
+        .custom-audio-player .player-controls .volume-container {
+            display: flex;
+            align-items: center;
+            width: 100px;
+        }
+        
+        .custom-audio-player .player-controls .volume-slider {
+            -webkit-appearance: none;
+            width: 100%;
+            height: 4px;
+            border-radius: 2px;
+            background: rgba(255, 255, 255, 0.2);
+            outline: none;
+            margin-left: 8px;
+        }
+        
+        .custom-audio-player .player-controls .volume-slider::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: white;
+            cursor: pointer;
+        }
+
+        /* Button Styling */
+        .resource-btn {
+            background-color: var(--primary);
+            color: var(--white);
+            border: none;
+            padding: 0.75rem 1.5rem;
+            border-radius: 25px;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            text-decoration: none;
+        }
+
+        .resource-btn:hover {
+            background-color: var(--primary-dark);
+            color: var(--white);
+            transform: translateY(-2px);
+            text-decoration: none;
+        }
+
+        .download-btn {
+            background-color: var(--tertiary);
+            color: var(--white);
+            border: none;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            font-size: 0.9rem;
+        }
+
+        .download-btn:hover {
+            background-color: #4d321f;
+            color: var(--white);
+            transform: translateY(-2px);
+            text-decoration: none;
+        }
+
+        /* Book/Article Card Styling */
+        .book-card {
+            background: linear-gradient(135deg, var(--white) 0%, var(--light) 100%);
+            border-left: 4px solid var(--primary);
+        }
+
+        .article-card {
+            background: linear-gradient(135deg, var(--white) 0%, #f0f8ff 100%);
+            border-left: 4px solid var(--tertiary);
+        }
+
+        /* Guidebook Card Special Styling */
+        .guidebook-card {
+            background: linear-gradient(135deg, var(--white) 0%, #f8f5f0 100%);
+            border-left: 4px solid var(--secondary);
+        }
+
+        .guidebook-featured {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+            color: var(--white);
+        }
+
+        .guidebook-featured h5,
+        .guidebook-featured p {
+            color: var(--white);
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--secondary) !important;
+            margin-top: 4rem;
+        }
+
+        .social-links a:hover {
+            color: #f8f5f0;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .custom-tabs .nav-link {
+                padding: 0.75rem 1rem;
+                font-size: 0.9rem;
+            }
+            
+            body {
+                padding-top: 66px;
+            }
+            
+            .custom-audio-player .player-header {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            
+            .custom-audio-player .player-header .play-icon {
+                margin-bottom: 10px;
+            }
+            
+            .custom-audio-player .player-header .duration {
+                position: absolute;
+                top: 1rem;
+                right: 1rem;
+            }
+        }
+        .cta>div>h2, .guidebook-featured>div>h3 {
+            color: var(--white);
+        }   
+    </style>
 </head>
 <body>
     <!-- Navigation -->
@@ -16,18 +354,17 @@
         <div class="container">
             <a class="navbar-brand" href="index.html">
                 <img src="images/logo.png" alt="Wellness Within Logo" height="50">
- 
             </a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ms-auto">
                     <li class="nav-item">
-                        <a class="nav-link active" href="index.html">Home</a>
+                        <a class="nav-link" href="index.html">Home</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="resources.html">Resources</a>
+                        <a class="nav-link active" href="resources.html">Resources</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="initiatives.html">Initiatives</a>
@@ -41,100 +378,291 @@
     </nav>
 
     <!-- Page Header -->
-    <header class="bg-light py-5 mt-5">
+    <header class="bg-light py-5">
         <div class="container">
             <div class="row align-items-center">
                 <div class="col-lg-8 mx-auto text-center">
-                    <h1>Mental Health Resources</h1>
-                    <p class="lead">Access our collection of tools, guides, and materials designed to support student mental wellbeing.</p>
+                    <h1 class="display-4"><strong> Health Resources</strong></h1>
+                    <p class="lead">Comprehensive collection of podcasts, books, articles, and guides to support your mental wellbeing journey.</p>
                 </div>
             </div>
         </div>
     </header>
 
-    <!-- Download Center Section -->
-    <section class="py-5" id="download-center" style="background-image: url('images/section-bg.jpg'); background-size: cover;">
+    <!-- Main Content with Tabs -->
+    <section class="py-5" style="background-image: url('images/section-bg.jpg'); background-size: cover;">
         <div class="container">
-            <h2 class="text-center mb-5">Download Center</h2>
-            <div class="row g-4">
-                <div class="col-md-6 col-lg-4">
-                    <div class="card h-100 resource-card">
-                        <div class="card-body">
-                            <h3 class="h5 card-title">7 Mental Health Tips for Students</h3>
-                            <p class="card-text">Quick, actionable strategies to manage stress and build resilience in your daily student life.</p>
-                            <a href="#" class="btn initiative-btn mt-3">Download PDF</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-6 col-lg-4">
-                    <div class="card h-100 resource-card">
-                        <div class="card-body">
-                            <h3 class="h5 card-title">Endure & Carry On Toolkit</h3>
-                            <p class="card-text">Downloadable guides, worksheets and checklists to help you navigate difficult academic periods.</p>
-                            <a href="#" class="btn initiative-btn mt-3">Download PDF</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-6 col-lg-4">
-                    <div class="card h-100 resource-card">
-                        <div class="card-body">
-                            <h3 class="h5 card-title">Mental Health Situational Analysis Report</h3>
-                            <p class="card-text">Insights into youth wellbeing trends in Tanzania based on our latest research.</p>
-                            <a href="#" class="btn initiative-btn mt-3">Download PDF</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-6 col-lg-4">
-                    <div class="card h-100 resource-card">
-                        <div class="card-body">
-                            <h3 class="h5 card-title">Practical Guidebook</h3>
-                            <p class="card-text">Step-by-step exercises curated by local experts to improve your mental wellness.</p>
-                            <a href="#" class="btn initiative-btn mt-3">Download PDF</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-6 col-lg-4">
-                    <div class="card h-100 resource-card">
-                        <div class="card-body">
-                            <h3 class="h5 card-title">Recommended Reads</h3>
-                            <p class="card-text">Our collection of must-read books on mental health and wellbeing:</p>
-                            <ul>
-                                <li>Are You OK? by Kati Morton</li>
-                                <li>Maybe You Should Talk to Someone by Lori Gottlieb</li>
-                                <li>What Happened to You? by Oprah Winfrey</li>
-                                <li>Stop Overthinking by Nick Trenton</li>
-                            </ul>
-                            <a href="#" class="btn initiative-btn mt-3">Download List</a>
-                        </div>
-                    </div>
-                </div>
-                <style>
-                    .initiative-btn {
-                        background-color: #5F6C59;
-                        color: #ffffff;
-                        border: none;
-                        transition: background-color 0.3s, color 0.3s;
-                    }
+            <!-- Custom Tab Navigation -->
+            <ul class="nav nav-tabs custom-tabs justify-content-center" id="resourceTabs" role="tablist">
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link active" id="podcast-tab" data-bs-toggle="tab" data-bs-target="#podcast" type="button" role="tab">
+                        <i class="fas fa-podcast me-2"></i>Podcasts
+                    </button>
+                </li>
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link" id="books-tab" data-bs-toggle="tab" data-bs-target="#books" type="button" role="tab">
+                        <i class="fas fa-book me-2"></i>Books & Articles
+                    </button>
+                </li>
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link" id="guidebook-tab" data-bs-toggle="tab" data-bs-target="#guidebook" type="button" role="tab">
+                        <i class="fas fa-file-alt me-2"></i>Guidebooks
+                    </button>
+                </li>
+            </ul>
 
-                    .initiative-btn:hover {
-                        background-color: #4a6b5e;
-                        color: #ffffff;
-                    }
-                    .initiative-card {
-                        border-radius: 10px;
-                        border-color: transparent;
-                        transition: transform 0.3s, box-shadow 0.5s;
-                        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
-                        background-color: #f8f9fa;
-                        color: #333;
-                    }
-                </style>
-                <div class="col-md-6 col-lg-4">
-                    <div class="card h-100 resource-card">
-                        <div class="card-body">
-                            <h3 class="h5 card-title">Stress Management Guide</h3>
-                            <p class="card-text">Comprehensive techniques to identify and manage stress during exam periods.</p>
-                            <a href="#" class="btn initiative-btn mt-3">Download PDF</a>
+            <!-- Tab Content -->
+            <div class="tab-content" id="resourceTabContent">
+
+                <!-- Updated Podcast Section -->
+                <div class="tab-pane fade show active" id="podcast" role="tabpanel">
+                    <div class="row g-3">
+                        <!-- Spotify Podcast 1 -->
+                        <div class="col-lg-6">
+                            <div class="podcast-card">
+                                <h5 class="card-title">Resilience Practices</h5>
+                                <p class="card-text">Learn practical resilience techniques from Tanzanian psychology experts and discover strategies to bounce back from life's challenges.</p>
+                                <div class="podcast-embed" style="height: 175px;">
+                                    <iframe 
+                                        src="https://open.spotify.com/embed/episode/5ayhEd1ov8reBQxGsD7sNp?utm_source=generator&theme=0" 
+                                        width="100%" 
+                                        height="175"
+                                        frameBorder="0" 
+                                        allowfullscreen="" 
+                                        allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" 
+                                        loading="lazy"
+                                        style="border-radius: 12px;">
+                                    </iframe>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Apple Podcast 1 -->
+                        <div class="col-lg-6">
+                            <div class="podcast-card">
+                                <h5 class="card-title">The Lasting Impact of Childhood Abuse on Mental Health</h5>
+                                <p class="card-text">This episode explores how experiences of childhood abuse can shape emotional and psychological wellbeing later in life.</p>
+                                <div class="podcast-embed" style="height: 175px;">
+                                    <iframe 
+                                        allow="autoplay *; encrypted-media *;" 
+                                        frameborder="0" 
+                                        height="175"
+                                        style="width:100%;overflow:hidden;border-radius:10px;" 
+                                        sandbox="allow-forms allow-popups allow-same-origin allow-scripts allow-top-navigation-by-user-activation" 
+                                        src="https://embed.podcasts.apple.com/tz/podcast/38-the-impact-of-childhood-abuse-on-a/id1667154547?i=1000662035054">
+                                    </iframe>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Spotify Podcast 2 -->
+                        <div class="col-lg-6">
+                            <div class="podcast-card">
+                                <h5 class="card-title">Managing Exam Anxiety</h5>
+                                <p class="card-text">Strategies to stay calm and focused during high-pressure academic periods, featuring real student experiences.</p>
+                                <div class="podcast-embed" style="height: 175px;">
+                                    <iframe 
+                                        src="https://open.spotify.com/embed/episode/5cVCpIlGEbqUqZdCcSIzFc?utm_source=generator&theme=0" 
+                                        width="100%" 
+                                        height="175"
+                                        frameBorder="0" 
+                                        allowfullscreen="" 
+                                        allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" 
+                                        loading="lazy"
+                                        style="border-radius: 12px;">
+                                    </iframe>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Apple Podcast 2 -->
+                        <div class="col-lg-6">
+                            <div class="podcast-card">
+                                <h5 class="card-title">The Impact of Parenting on a Child’s Mental Health</h5>
+                                <p class="card-text">Discover how parenting choices shape a child’s mental health and emotional growth.</p>
+                                <div class="podcast-embed" style="height: 175px;">
+                                    <iframe 
+                                        allow="autoplay *; encrypted-media *;" 
+                                        frameborder="0" 
+                                        height="175"
+                                        style="width:100%;overflow:hidden;border-radius:10px;" 
+                                        sandbox="allow-forms allow-popups allow-same-origin allow-scripts allow-top-navigation-by-user-activation" 
+                                        src="https://embed.podcasts.apple.com/tz/podcast/20-the-impact-of-parenting-on-a-childs-mental/id1667154547?i=1000614628795">
+                                    </iframe>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Books & Articles Tab -->
+                <div class="tab-pane fade" id="books" role="tabpanel">
+                    <div class="row g-4">
+                        <!-- Recommended Books -->
+                        <div class="col-lg-6">
+                            <div class="card resource-card book-card">
+                                <div class="card-body">
+                                    <h5 class="card-title">
+                                        <i class="fas fa-book-open me-2" style="color: #47645d;"></i>Recommended Books
+                                    </h5>
+                                    <ul class="list-unstyled">
+                                        <li class="mb-3">
+                                            <strong>Are You OK?</strong> by Kati Morton
+                                            <p class="text-muted mb-1">A guide to caring for your mental health</p>
+                                            <a href="#" class="download-btn">Get Book Info</a>
+                                        </li>
+                                        <li class="mb-3">
+                                            <strong>Maybe You Should Talk to Someone</strong> by Lori Gottlieb
+                                            <p class="text-muted mb-1">A therapist's journey through therapy</p>
+                                            <a href="#" class="download-btn">Get Book Info</a>
+                                        </li>
+                                        <li class="mb-3">
+                                            <strong>What Happened to You?</strong> by Oprah Winfrey
+                                            <p class="text-muted mb-1">Conversations on trauma and healing</p>
+                                            <a href="#" class="download-btn">Get Book Info</a>
+                                        </li>
+                                        <li class="mb-3">
+                                            <strong>Stop Overthinking</strong> by Nick Trenton
+                                            <p class="text-muted mb-1">23 techniques to relieve stress and anxiety</p>
+                                            <a href="#" class="download-btn">Get Book Info</a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Featured Articles -->
+                        <div class="col-lg-6">
+                            <div class="card resource-card article-card">
+                                <div class="card-body">
+                                    <h5 class="card-title">
+                                        <i class="fas fa-newspaper me-2" style="color: #664234;"></i>Featured Articles
+                                    </h5>
+                                    <div class="mb-3">
+                                        <strong>Understanding Mental Health in Tanzania</strong>
+                                        <p class="text-muted mb-2">Research-based insights into mental health challenges and solutions specific to Tanzanian students.</p>
+                                        <a href="#" class="resource-btn">Read Article</a>
+                                    </div>
+                                    <div class="mb-3">
+                                        <strong>Study-Life Balance: A Student's Guide</strong>
+                                        <p class="text-muted mb-2">Practical strategies for maintaining mental wellness while pursuing academic excellence.</p>
+                                        <a href="#" class="resource-btn">Read Article</a>
+                                    </div>
+                                    <div class="mb-3">
+                                        <strong>Breaking Mental Health Stigma</strong>
+                                        <p class="text-muted mb-2">How to talk about mental health in your community and support others in their journey.</p>
+                                        <a href="#" class="resource-btn">Read Article</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Research Papers -->
+                        <div class="col-12">
+                            <div class="card resource-card">
+                                <div class="card-body">
+                                    <h5 class="card-title">
+                                        <i class="fas fa-graduation-cap me-2 text-secondary"></i>Research & Reports
+                                    </h5>
+                                    <div class="row">
+                                        <div class="col-md-4 mb-3">
+                                            <strong>Mental Health Situational Analysis Report</strong>
+                                            <p class="text-muted">Comprehensive insights into youth wellbeing trends in Tanzania based on our latest research.</p>
+                                            <a href="#" class="download-btn">Download PDF</a>
+                                        </div>
+                                        <div class="col-md-4 mb-3">
+                                            <strong>Student Wellness Survey Results</strong>
+                                            <p class="text-muted">Key findings from our 2024 survey of mental health needs among Tanzanian students.</p>
+                                            <a href="#" class="download-btn">Download PDF</a>
+                                        </div>
+                                        <div class="col-md-4 mb-3">
+                                            <strong>Community Mental Health Guidelines</strong>
+                                            <p class="text-muted">Best practices for creating supportive mental health environments in educational settings.</p>
+                                            <a href="#" class="download-btn">Download PDF</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Guidebook Tab -->
+                <div class="tab-pane fade" id="guidebook" role="tabpanel">
+                    <div class="row g-4">
+                        <!-- Featured Guidebook -->
+                        <div class="col-12">
+                            <div class="card resource-card guidebook-featured">
+                                <div class="card-body text-center py-5">
+                                    <i class="fas fa-book fa-3x mb-3"></i>
+                                    <h3>Complete Mental Wellness Guidebook</h3>
+                                    <p class="lead">Our comprehensive guide featuring step-by-step exercises, self-assessment tools, and practical strategies curated by local mental health experts.</p>
+                                    <a href="#" class="btn btn-light btn-lg mt-3">
+                                        <i class="fas fa-download me-2"></i>Download Complete Guide
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Individual Guides -->
+                        <div class="col-md-6 col-lg-4">
+                            <div class="card resource-card guidebook-card">
+                                <div class="card-body">
+                                    <h5 class="card-title">7 Mental Health Tips for Students</h5>
+                                    <p class="card-text">Quick, actionable strategies to manage stress and build resilience in your daily student life.</p>
+                                    <a href="#" class="resource-btn">Download PDF</a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-md-6 col-lg-4">
+                            <div class="card resource-card guidebook-card">
+                                <div class="card-body">
+                                    <h5 class="card-title">Endure & Carry On Toolkit</h5>
+                                    <p class="card-text">Downloadable guides, worksheets and checklists to help you navigate difficult academic periods.</p>
+                                    <a href="#" class="resource-btn">Download PDF</a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-md-6 col-lg-4">
+                            <div class="card resource-card guidebook-card">
+                                <div class="card-body">
+                                    <h5 class="card-title">Stress Management Guide</h5>
+                                    <p class="card-text">Comprehensive techniques to identify and manage stress during exam periods and beyond.</p>
+                                    <a href="#" class="resource-btn">Download PDF</a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-md-6 col-lg-4">
+                            <div class="card resource-card guidebook-card">
+                                <div class="card-body">
+                                    <h5 class="card-title">Mindfulness & Meditation Guide</h5>
+                                    <p class="card-text">Introduction to mindfulness practices tailored for busy students with guided exercises.</p>
+                                    <a href="#" class="resource-btn">Download PDF</a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-md-6 col-lg-4">
+                            <div class="card resource-card guidebook-card">
+                                <div class="card-body">
+                                    <h5 class="card-title">Crisis Support Handbook</h5>
+                                    <p class="card-text">Essential information on recognizing mental health crises and accessing immediate support.</p>
+                                    <a href="#" class="resource-btn">Download PDF</a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-md-6 col-lg-4">
+                            <div class="card resource-card guidebook-card">
+                                <div class="card-body">
+                                    <h5 class="card-title">Self-Care Planning Workbook</h5>
+                                    <p class="card-text">Interactive workbook to help you create and maintain a personalized self-care routine.</p>
+                                    <a href="#" class="resource-btn">Download PDF</a>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -142,89 +670,18 @@
         </div>
     </section>
 
-    <!-- Podcast Portal Section -->
-    <section class="py-5 bg-light hide" id="podcast-portal" style="background-image: url('images/section-bg.jpg'); background-size: cover;">
-        <div class="container">
-            <h2 class="text-center mb-5">Podcast Portal</h2>
-            <div class="row g-4">
-                <!-- Podcast 1 -->
-                <div class="col-md-6 col-lg-4">
-                    <div class="card h-100">
-                        <div class="card-body spotify">
-                            <h3 class="h5 card-title">Resilience Practices</h3>
-                            <p class="card-text">Learn practical resilience techniques from Tanzanian psychology experts.</p>
-                            <iframe 
-                                src="https://open.spotify.com/embed/episode/5ayhEd1ov8reBQxGsD7sNp?utm_source=generator&theme=0" 
-                                width="100%" 
-                                height="152" 
-                                frameBorder="0" 
-                                allowfullscreen="" 
-                                allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" 
-                                loading="lazy"
-                                style="border-radius: 12px; border: none;">
-                            </iframe>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Podcast 2 -->
-                <div class="col-md-6 col-lg-4">
-                    <div class="card h-100">
-                        <div class="card-body spotify">
-                            <h3 class="h5 card-title">Managing Exam Anxiety</h3>
-                            <p class="card-text">Strategies to stay calm and focused during high-pressure academic periods.</p>
-                            <iframe 
-                                src="https://open.spotify.com/embed/episode/5cVCpIlGEbqUqZdCcSIzFc?si=qioBZY4yRHW2kwmXUJ3QNg?utm_source=generator&theme=0" 
-                                width="100%" 
-                                height="152" 
-                                frameBorder="0" 
-                                allowfullscreen="" 
-                                allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" 
-                                loading="lazy"
-                                style="border-radius: 12px; border: none;">
-                            </iframe>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Podcast 3 -->
-                <div class="col-md-6 col-lg-4">
-                    <div class="card h-100">
-                        <div class="card-body spotify">
-                            <h3 class="h5 card-title">Student Voices: Finding Balance</h3>
-                            <p class="card-text">Real stories from Tanzanian students who found ways to balance academics and wellbeing.</p>
-                            <iframe 
-                                src="https://open.spotify.com/embed/episode/6ED67gav9jeoHk30oo9l1q?si=kl-IH595QUiFgmD0kTQGpQ?utm_source=generator&theme=0" 
-                                width="100%" 
-                                height="152" 
-                                frameBorder="0" 
-                                allowfullscreen="" 
-                                allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" 
-                                loading="lazy"
-                                style="border-radius: 12px; border: none;">
-                            </iframe>
-                        </div>
-                    </div>
-                </div>
-            </div>
+    <!-- Call to Action -->
+    <section class="py-5 cta" style="background-color: var(--primary); color: white;">
+        <div class="container text-center">
+            <h2>Need Additional Support?</h2>
+            <p class="lead">Our team is here to help you on your mental wellness journey.</p>
+            <a href="contact.html" class="btn btn-light btn-lg me-3">Get in Touch</a>
+            <a href="contact.html" class="btn btn-outline-light btn-lg">WhatsApp Helpline</a>
         </div>
-        <style>
-            .spotify {
-                background-color: #f8f9fa;
-                border-radius: 10px;
-                padding: 20px;
-                box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
-            }
-            .spotify:hover {
-                box-shadow: 0 8px 40px rgba(0, 0, 0, 0.2);
-                transform: scale(1.02);
-                transition: transform 0.3s ease, box-shadow 0.3s ease;
-            }
-        </style>
     </section>
-    
+
     <!-- Footer -->
-    <footer class="py-5 text-white" style="background-color: #664234;">
+    <footer class="py-5 text-white">
         <div class="container">
             <div class="row">
                 <div class="col-lg-4 mb-4 mb-lg-0">
@@ -235,28 +692,16 @@
                     <h3 class="h5">Contact Us</h3>
                     <p>General Inquiries:<br>
                     <a href="mailto:info@wellnesswithin.africa" class="text-white">info@wellnesswithin.africa</a><br>
-                    <a href="tel:+255 783 885 351" class="text-white" style="text-decoration:none;">+255 783 885 351</a></p>
-                    <p>WhatsApp Helpline:<br>
-                    <a href="#" class="btn btn-sm whatsapp-btn mt-2">Start WhatsApp Chat →</a></p>
-                    <style>
-                        .whatsapp-btn {
-                            background-color: #f8f9fa;
-                            color: #5F6C59;
-                            border: 1px solid #5F6C59;
-                            transition: background-color 0.3s, color 0.3s;
-                        }
-                        .whatsapp-btn:hover {
-                            background-color: #dbe9f8;
-                            color: #4a6b5e;
-                        }
-                    </style>
+                    <a href="tel:+255783885351" class="text-white" style="text-decoration:none;">+255 783 885 351</a></p>
+                    <div class="mt-3">
+                        <a href="#" class="btn btn-sm btn-outline-light">Start WhatsApp Chat →</a>
+                    </div>
                 </div>
                 <div class="col-lg-4">
                     <h3 class="h5">Follow Us</h3>
                     <div class="social-links">
                         <a href="#" class="text-white me-3"><i class="fab fa-linkedin fa-2x"></i></a>
                         <a href="#" class="text-white me-3"><i class="fab fa-twitter fa-2x"></i></a>
-                        <!--Instagram link -->
                         <a href="https://www.instagram.com/wellness_within_hub/" target="_blank" class="text-white"><i class="fab fa-instagram fa-2x"></i></a>
                     </div>
                 </div>
@@ -267,24 +712,124 @@
             </div>
         </div>
     </footer>
+
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/js/all.min.js"></script>
-    <script src="js/scripts.js"></script>
     <script>
-        // Smooth scrolling for navigation links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function(e) {
-                e.preventDefault();
-                document.querySelector(this.getAttribute('href')).scrollIntoView({
-                    behavior: 'smooth'
+        // Add smooth transitions between tabs
+        document.addEventListener('DOMContentLoaded', function() {
+            const tabButtons = document.querySelectorAll('[data-bs-toggle="tab"]');
+            
+            tabButtons.forEach(button => {
+                button.addEventListener('shown.bs.tab', function(e) {
+                    // Add a subtle fade-in effect to the active tab content
+                    const targetPane = document.querySelector(e.target.getAttribute('data-bs-target'));
+                    targetPane.style.opacity = '0';
+                    setTimeout(() => {
+                        targetPane.style.transition = 'opacity 0.3s ease-in-out';
+                        targetPane.style.opacity = '1';
+                    }, 50);
+                });
+            });
+
+            // Initialize podcast players
+            function initPodcastPlayer(playerId) {
+                const audio = document.getElementById(`audio${playerId}`);
+                const playPauseBtn = document.getElementById(`play-pause${playerId}`);
+                const skipBackBtn = document.getElementById(`skip-back${playerId}`);
+                const skipForwardBtn = document.getElementById(`skip-forward${playerId}`);
+                const volumeSlider = document.getElementById(`volume${playerId}`);
+                const progressContainer = document.querySelector(`.progress-container[data-audio="audio${playerId}"]`);
+                const progressBar = document.getElementById(`progress${playerId}`);
+                const currentTimeEl = document.getElementById(`current-time${playerId}`);
+                const totalTimeEl = document.getElementById(`total-time${playerId}`);
+                const playIcon = document.querySelector(`.play-icon[data-audio="audio${playerId}"]`);
+                
+                // Set total time
+                audio.addEventListener('loadedmetadata', function() {
+                    const totalMinutes = Math.floor(audio.duration / 60);
+                    const totalSeconds = Math.floor(audio.duration % 60);
+                    totalTimeEl.textContent = `${totalMinutes}:${totalSeconds < 10 ? '0' : ''}${totalSeconds}`;
+                });
+                
+                // Play/Pause functionality
+                playPauseBtn.addEventListener('click', function() {
+                    if (audio.paused) {
+                        audio.play();
+                        playPauseBtn.innerHTML = '<i class="fas fa-pause"></i>';
+                        playIcon.innerHTML = '<i class="fas fa-pause"></i>';
+                    } else {
+                        audio.pause();
+                        playPauseBtn.innerHTML = '<i class="fas fa-play"></i>';
+                        playIcon.innerHTML = '<i class="fas fa-play"></i>';
+                    }
+                });
+                
+                // Play icon functionality
+                playIcon.addEventListener('click', function() {
+                    if (audio.paused) {
+                        audio.play();
+                        playPauseBtn.innerHTML = '<i class="fas fa-pause"></i>';
+                        playIcon.innerHTML = '<i class="fas fa-pause"></i>';
+                    } else {
+                        audio.pause();
+                        playPauseBtn.innerHTML = '<i class="fas fa-play"></i>';
+                        playIcon.innerHTML = '<i class="fas fa-play"></i>';
+                    }
+                });
+                
+                // Skip back 10 seconds
+                skipBackBtn.addEventListener('click', function() {
+                    audio.currentTime = Math.max(0, audio.currentTime - 10);
+                });
+                
+                // Skip forward 30 seconds
+                skipForwardBtn.addEventListener('click', function() {
+                    audio.currentTime = Math.min(audio.duration, audio.currentTime + 30);
+                });
+                
+                // Volume control
+                volumeSlider.addEventListener('input', function() {
+                    audio.volume = volumeSlider.value;
+                });
+                
+                // Progress bar update
+                audio.addEventListener('timeupdate', function() {
+                    const progress = (audio.currentTime / audio.duration) * 100;
+                    progressBar.style.width = `${progress}%`;
+                    
+                    // Update current time display
+                    const currentMinutes = Math.floor(audio.currentTime / 60);
+                    const currentSeconds = Math.floor(audio.currentTime % 60);
+                    currentTimeEl.textContent = `${currentMinutes}:${currentSeconds < 10 ? '0' : ''}${currentSeconds}`;
+                });
+                
+                // Progress bar click to seek
+                progressContainer.addEventListener('click', function(e) {
+                    const rect = progressContainer.getBoundingClientRect();
+                    const pos = (e.pageX - rect.left) / rect.width;
+                    audio.currentTime = pos * audio.duration;
+                });
+                
+                // When audio ends, reset UI
+                audio.addEventListener('ended', function() {
+                    playPauseBtn.innerHTML = '<i class="fas fa-play"></i>';
+                    playIcon.innerHTML = '<i class="fas fa-play"></i>';
+                });
+            }
+            
+            // Initialize both players
+            initPodcastPlayer(1);
+            initPodcastPlayer(2);
+
+            // Add click tracking for resource buttons (optional)
+            document.querySelectorAll('.resource-btn, .download-btn').forEach(btn => {
+                btn.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    console.log('Resource clicked:', this.textContent);
+                    // Here you could add analytics tracking or actual download functionality
                 });
             });
         });
-        // Show/Hide Podcast Portal
-        document.querySelector('#podcast-portal').classList.remove('hide');
-        document.querySelector('#download-center').classList.add('hide');
-        document.querySelector('#download-center').classList.remove('hide');
-        document.querySelector('#podcast-portal').classList.add('hide');
     </script>
 </body>
 </html>
