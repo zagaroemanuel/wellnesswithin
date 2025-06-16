@@ -48,10 +48,20 @@
             color: var(--primary);
         }
 
-        /* Custom Tab Styling */
+        /* Enhanced Custom Tab Styling with Mobile Optimization */
         .custom-tabs {
             border-bottom: 3px solid var(--primary);
             margin-bottom: 2rem;
+            background-color: var(--white);
+            border-radius: 15px 15px 0 0;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            overflow-x: auto;
+            white-space: nowrap;
+        }
+
+        .custom-tabs .nav {
+            flex-wrap: nowrap;
+            min-width: 100%;
         }
 
         .custom-tabs .nav-link {
@@ -59,10 +69,12 @@
             border: none;
             color: var(--secondary);
             font-weight: 600;
-            padding: 1rem 2rem;
+            padding: 1.2rem 2rem;
             border-radius: 0;
             position: relative;
             transition: all 0.3s ease;
+            white-space: nowrap;
+            min-width: fit-content;
         }
 
         .custom-tabs .nav-link:hover {
@@ -75,6 +87,10 @@
             background-color: var(--white);
             border-bottom: 3px solid var(--primary);
             margin-bottom: -3px;
+        }
+
+        .custom-tabs .nav-link i {
+            margin-right: 0.5rem;
         }
 
         /* Resource Cards */
@@ -113,135 +129,6 @@
             margin-top: 1rem;
         }
 
-        /* Custom Audio Player Styling */
-        .custom-audio-player {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            border-radius: 12px;
-            padding: 1rem;
-            color: white;
-            margin-top: 1rem;
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .custom-audio-player .player-header {
-            display: flex;
-            align-items: center;
-            margin-bottom: 10px;
-        }
-        
-        .custom-audio-player .player-header .play-icon {
-            background-color: rgba(255, 255, 255, 0.2);
-            width: 36px;
-            height: 36px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin-right: 10px;
-            cursor: pointer;
-            transition: all 0.3s ease;
-        }
-        
-        .custom-audio-player .player-header .play-icon:hover {
-            background-color: rgba(255, 255, 255, 0.3);
-        }
-        
-        .custom-audio-player .player-header .podcast-title {
-            font-weight: 600;
-            font-size: 0.95rem;
-            flex-grow: 1;
-        }
-        
-        .custom-audio-player .player-header .duration {
-            font-size: 0.85rem;
-            opacity: 0.8;
-        }
-        
-        .custom-audio-player .progress-container {
-            background: rgba(255, 255, 255, 0.2);
-            height: 4px;
-            border-radius: 2px;
-            margin: 10px 0;
-            cursor: pointer;
-            position: relative;
-        }
-        
-        .custom-audio-player .progress-bar {
-            background-color: var(--tertiary);
-            height: 100%;
-            width: 0%;
-            border-radius: 2px;
-            position: relative;
-        }
-        
-        .custom-audio-player .progress-bar::after {
-            content: '';
-            position: absolute;
-            right: -5px;
-            top: 50%;
-            transform: translateY(-50%);
-            width: 10px;
-            height: 10px;
-            background-color: white;
-            border-radius: 50%;
-        }
-        
-        .custom-audio-player .time-info {
-            display: flex;
-            justify-content: space-between;
-            font-size: 0.8rem;
-            opacity: 0.8;
-        }
-        
-        .custom-audio-player .player-controls {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-top: 15px;
-        }
-        
-        .custom-audio-player .player-controls .control-btn {
-            background: transparent;
-            border: none;
-            color: white;
-            font-size: 1.2rem;
-            cursor: pointer;
-            padding: 5px;
-            opacity: 0.8;
-            transition: all 0.3s ease;
-        }
-        
-        .custom-audio-player .player-controls .control-btn:hover {
-            opacity: 1;
-            transform: scale(1.1);
-        }
-        
-        .custom-audio-player .player-controls .volume-container {
-            display: flex;
-            align-items: center;
-            width: 100px;
-        }
-        
-        .custom-audio-player .player-controls .volume-slider {
-            -webkit-appearance: none;
-            width: 100%;
-            height: 4px;
-            border-radius: 2px;
-            background: rgba(255, 255, 255, 0.2);
-            outline: none;
-            margin-left: 8px;
-        }
-        
-        .custom-audio-player .player-controls .volume-slider::-webkit-slider-thumb {
-            -webkit-appearance: none;
-            width: 12px;
-            height: 12px;
-            border-radius: 50%;
-            background: white;
-            cursor: pointer;
-        }
-
         /* Button Styling */
         .resource-btn {
             background-color: var(--primary);
@@ -252,6 +139,7 @@
             font-weight: 500;
             transition: all 0.3s ease;
             text-decoration: none;
+            display: inline-block;
         }
 
         .resource-btn:hover {
@@ -271,6 +159,7 @@
             transition: all 0.3s ease;
             text-decoration: none;
             font-size: 0.9rem;
+            display: inline-block;
         }
 
         .download-btn:hover {
@@ -307,6 +196,90 @@
             color: var(--white);
         }
 
+        /* Enhanced CTA Section */
+        .cta {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cta::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 20"><defs><pattern id="grain" width="100" height="100" patternUnits="userSpaceOnUse"><circle cx="50" cy="50" r="1" fill="rgba(255,255,255,0.05)"/></pattern></defs><rect width="100%" height="100%" fill="url(%23grain)"/></svg>');
+            opacity: 0.3;
+        }
+
+        .cta .container {
+            position: relative;
+            z-index: 2;
+        }
+
+        .cta h2 {
+            color: var(--white) !important;
+            margin-bottom: 1rem;
+            font-size: 2.5rem;
+            font-weight: 700;
+        }
+
+        .cta .lead {
+            font-size: 1.25rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .cta .btn {
+            padding: 1rem 2rem;
+            font-weight: 600;
+            border-radius: 30px;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            min-width: 180px;
+            justify-content: center;
+        }
+
+        .cta .btn-light {
+            background-color: var(--white);
+            color: var(--primary);
+            border: 2px solid var(--white);
+        }
+
+        .cta .btn-light:hover {
+            background-color: transparent;
+            color: var(--white);
+            border-color: var(--white);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+        }
+
+        .cta .btn-outline-light {
+            background-color: transparent;
+            color: var(--white);
+            border: 2px solid var(--white);
+        }
+
+        .cta .btn-outline-light:hover {
+            background-color: var(--white);
+            color: var(--primary);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+        }
+
         /* Footer */
         footer {
             background-color: var(--secondary) !important;
@@ -317,35 +290,136 @@
             color: #f8f5f0;
         }
 
-        /* Responsive */
-        @media (max-width: 768px) {
-            .custom-tabs .nav-link {
-                padding: 0.75rem 1rem;
-                font-size: 0.9rem;
+        /* Enhanced Responsive Design */
+        @media (max-width: 992px) {
+            .cta h2 {
+                font-size: 2rem;
             }
             
+            .cta .lead {
+                font-size: 1.1rem;
+            }
+        }
+
+        @media (max-width: 768px) {
             body {
                 padding-top: 66px;
             }
-            
-            .custom-audio-player .player-header {
+
+            /* Mobile Tab Optimization */
+            .custom-tabs {
+                margin: 0 -15px 2rem -15px;
+                border-radius: 0;
+                box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            }
+
+            .custom-tabs .nav-link {
+                padding: 1rem 1.5rem;
+                font-size: 0.9rem;
+                min-width: 120px;
+            }
+
+            .custom-tabs .nav-link i {
+                display: block;
+                margin: 0 0 0.25rem 0;
+                font-size: 1.2rem;
+            }
+
+            /* Ensure tabs scroll horizontally on mobile */
+            .custom-tabs::-webkit-scrollbar {
+                height: 3px;
+            }
+
+            .custom-tabs::-webkit-scrollbar-track {
+                background: var(--light);
+            }
+
+            .custom-tabs::-webkit-scrollbar-thumb {
+                background: var(--primary);
+                border-radius: 3px;
+            }
+
+            /* CTA Mobile Optimization */
+            .cta {
+                padding: 3rem 0 !important;
+            }
+
+            .cta h2 {
+                font-size: 1.75rem;
+                margin-bottom: 1rem;
+            }
+
+            .cta .lead {
+                font-size: 1rem;
+                margin-bottom: 1.5rem;
+            }
+
+            .cta-buttons {
                 flex-direction: column;
-                align-items: flex-start;
+                gap: 1rem;
+                width: 100%;
             }
-            
-            .custom-audio-player .player-header .play-icon {
-                margin-bottom: 10px;
+
+            .cta .btn {
+                width: 100%;
+                max-width: 280px;
+                padding: 1rem 1.5rem;
+                font-size: 1rem;
             }
-            
-            .custom-audio-player .player-header .duration {
-                position: absolute;
-                top: 1rem;
-                right: 1rem;
+
+            /* Podcast cards mobile optimization */
+            .podcast-card {
+                padding: 1rem;
+                margin-bottom: 1.5rem;
+            }
+
+            .podcast-embed {
+                height: 152px !important;
+            }
+
+            /* Resource cards mobile spacing */
+            .resource-card .card-body {
+                padding: 1.25rem;
             }
         }
-        .cta>div>h2, .guidebook-featured>div>h3 {
-            color: var(--white);
-        }   
+
+        @media (max-width: 576px) {
+            .custom-tabs .nav-link {
+                padding: 0.875rem 1rem;
+                font-size: 0.85rem;
+                min-width: 100px;
+            }
+
+            .cta h2 {
+                font-size: 1.5rem;
+            }
+
+            .cta .lead {
+                font-size: 0.95rem;
+            }
+        }
+
+        /* Tab content fade transition */
+        .tab-pane {
+            opacity: 0;
+            transition: opacity 0.3s ease-in-out;
+        }
+
+        .tab-pane.show.active {
+            opacity: 1;
+        }
+
+        /* Guidebook featured card mobile adjustments */
+        @media (max-width: 768px) {
+            .guidebook-featured .card-body {
+                padding: 2rem 1.5rem;
+            }
+
+            .guidebook-featured h3 {
+                font-size: 1.5rem;
+                color: var(--white) !important;
+            }
+        }
     </style>
 </head>
 <body>
@@ -382,7 +456,7 @@
         <div class="container">
             <div class="row align-items-center">
                 <div class="col-lg-8 mx-auto text-center">
-                    <h1 class="display-4"><strong> Health Resources</strong></h1>
+                    <h1 class="display-4"><strong>Mental Health Resources</strong></h1>
                     <p class="lead">Comprehensive collection of podcasts, books, articles, and guides to support your mental wellbeing journey.</p>
                 </div>
             </div>
@@ -392,24 +466,29 @@
     <!-- Main Content with Tabs -->
     <section class="py-5" style="background-image: url('images/section-bg.jpg'); background-size: cover;">
         <div class="container">
-            <!-- Custom Tab Navigation -->
-            <ul class="nav nav-tabs custom-tabs justify-content-center" id="resourceTabs" role="tablist">
-                <li class="nav-item" role="presentation">
-                    <button class="nav-link active" id="podcast-tab" data-bs-toggle="tab" data-bs-target="#podcast" type="button" role="tab">
-                        <i class="fas fa-podcast me-2"></i>Podcasts
-                    </button>
-                </li>
-                <li class="nav-item" role="presentation">
-                    <button class="nav-link" id="books-tab" data-bs-toggle="tab" data-bs-target="#books" type="button" role="tab">
-                        <i class="fas fa-book me-2"></i>Books & Articles
-                    </button>
-                </li>
-                <li class="nav-item" role="presentation">
-                    <button class="nav-link" id="guidebook-tab" data-bs-toggle="tab" data-bs-target="#guidebook" type="button" role="tab">
-                        <i class="fas fa-file-alt me-2"></i>Guidebooks
-                    </button>
-                </li>
-            </ul>
+            <!-- Enhanced Custom Tab Navigation -->
+            <div class="custom-tabs">
+                <ul class="nav nav-tabs justify-content-center" id="resourceTabs" role="tablist">
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link active" id="podcast-tab" data-bs-toggle="tab" data-bs-target="#podcast" type="button" role="tab">
+                            <i class="fas fa-podcast"></i>
+                            <span>Podcasts</span>
+                        </button>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link" id="books-tab" data-bs-toggle="tab" data-bs-target="#books" type="button" role="tab">
+                            <i class="fas fa-book"></i>
+                            <span>Books & Articles</span>
+                        </button>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link" id="guidebook-tab" data-bs-toggle="tab" data-bs-target="#guidebook" type="button" role="tab">
+                            <i class="fas fa-file-alt"></i>
+                            <span>Guidebooks</span>
+                        </button>
+                    </li>
+                </ul>
+            </div>
 
             <!-- Tab Content -->
             <div class="tab-content" id="resourceTabContent">
@@ -417,31 +496,11 @@
                 <!-- Updated Podcast Section -->
                 <div class="tab-pane fade show active" id="podcast" role="tabpanel">
                     <div class="row g-3">
-                        <!-- Spotify Podcast 1 -->
+                        <!-- 12 - Mtazamo | Perception ft. Spencer Minja -->
                         <div class="col-lg-6">
                             <div class="podcast-card">
-                                <h5 class="card-title">Resilience Practices</h5>
-                                <p class="card-text">Learn practical resilience techniques from Tanzanian psychology experts and discover strategies to bounce back from life's challenges.</p>
-                                <div class="podcast-embed" style="height: 175px;">
-                                    <iframe 
-                                        src="https://open.spotify.com/embed/episode/5ayhEd1ov8reBQxGsD7sNp?utm_source=generator&theme=0" 
-                                        width="100%" 
-                                        height="175"
-                                        frameBorder="0" 
-                                        allowfullscreen="" 
-                                        allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" 
-                                        loading="lazy"
-                                        style="border-radius: 12px;">
-                                    </iframe>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Apple Podcast 1 -->
-                        <div class="col-lg-6">
-                            <div class="podcast-card">
-                                <h5 class="card-title">The Lasting Impact of Childhood Abuse on Mental Health</h5>
-                                <p class="card-text">This episode explores how experiences of childhood abuse can shape emotional and psychological wellbeing later in life.</p>
+                                <h5 class="card-title">12 - Mtazamo | Perception</h5>
+                                <p class="card-text">Episode hii inazungumzia jinsi mitazamo huathiri maisha yetu, na namna vijana wanaweza kuitumia kufikia mafanikio licha ya changamoto za kiakili na kijamii.</p>
                                 <div class="podcast-embed" style="height: 175px;">
                                     <iframe 
                                         allow="autoplay *; encrypted-media *;" 
@@ -449,37 +508,17 @@
                                         height="175"
                                         style="width:100%;overflow:hidden;border-radius:10px;" 
                                         sandbox="allow-forms allow-popups allow-same-origin allow-scripts allow-top-navigation-by-user-activation" 
-                                        src="https://embed.podcasts.apple.com/tz/podcast/38-the-impact-of-childhood-abuse-on-a/id1667154547?i=1000662035054">
+                                        src="https://embed.podcasts.apple.com/tz/podcast/12-mtazamo-perception-ft-spencer-minja/id1667154547?i=1000606811198">
                                     </iframe>
                                 </div>
                             </div>
                         </div>
 
-                        <!-- Spotify Podcast 2 -->
+                        <!-- 04 - Battling Suicidal Thoughts -->
                         <div class="col-lg-6">
                             <div class="podcast-card">
-                                <h5 class="card-title">Managing Exam Anxiety</h5>
-                                <p class="card-text">Strategies to stay calm and focused during high-pressure academic periods, featuring real student experiences.</p>
-                                <div class="podcast-embed" style="height: 175px;">
-                                    <iframe 
-                                        src="https://open.spotify.com/embed/episode/5cVCpIlGEbqUqZdCcSIzFc?utm_source=generator&theme=0" 
-                                        width="100%" 
-                                        height="175"
-                                        frameBorder="0" 
-                                        allowfullscreen="" 
-                                        allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" 
-                                        loading="lazy"
-                                        style="border-radius: 12px;">
-                                    </iframe>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Apple Podcast 2 -->
-                        <div class="col-lg-6">
-                            <div class="podcast-card">
-                                <h5 class="card-title">The Impact of Parenting on a Child’s Mental Health</h5>
-                                <p class="card-text">Discover how parenting choices shape a child’s mental health and emotional growth.</p>
+                                <h5 class="card-title">04 - Battling Suicidal Thoughts</h5>
+                                <p class="card-text">A young woman shares how academic pressure, parental expectations, and betrayal led to suicidal thoughts—and how humor, therapy, and support helped her heal.</p>
                                 <div class="podcast-embed" style="height: 175px;">
                                     <iframe 
                                         allow="autoplay *; encrypted-media *;" 
@@ -487,7 +526,43 @@
                                         height="175"
                                         style="width:100%;overflow:hidden;border-radius:10px;" 
                                         sandbox="allow-forms allow-popups allow-same-origin allow-scripts allow-top-navigation-by-user-activation" 
-                                        src="https://embed.podcasts.apple.com/tz/podcast/20-the-impact-of-parenting-on-a-childs-mental/id1667154547?i=1000614628795">
+                                        src="https://embed.podcasts.apple.com/tz/podcast/04-battling-suicidal-thoughts/id1667154547?i=1000597779544">
+                                    </iframe>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- 20 - The Impact of Parenting on a Child's Mental Health in Tanzania ft. Mariam Albhai -->
+                        <div class="col-lg-6">
+                            <div class="podcast-card">
+                                <h5 class="card-title">20 - The Impact of Parenting on a Child's Mental Health</h5>
+                                <p class="card-text">This episode explores how parenting styles in Tanzania shape a child's mental health, with insights from Mariam Albhai on culture, care, and psychosocial growth.</p>
+                                <div class="podcast-embed" style="height: 175px;">
+                                    <iframe 
+                                        allow="autoplay *; encrypted-media *;" 
+                                        frameborder="0" 
+                                        height="175"
+                                        style="width:100%;overflow:hidden;border-radius:10px;" 
+                                        sandbox="allow-forms allow-popups allow-same-origin allow-scripts allow-top-navigation-by-user-activation" 
+                                        src="https://embed.podcasts.apple.com/tz/podcast/mental-glow/id1667154547?i=1000614628795">
+                                    </iframe>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- 06 - Going through an Identity Crisis -->
+                        <div class="col-lg-6">
+                            <div class="podcast-card">
+                                <h5 class="card-title">06 - Going through an Identity Crisis</h5>
+                                <p class="card-text">A personal story on how academic pressure and parental influence led to an identity crisis, and the journey to discovering true passion.</p>
+                                <div class="podcast-embed" style="height: 175px;">
+                                    <iframe 
+                                        allow="autoplay *; encrypted-media *;" 
+                                        frameborder="0" 
+                                        height="175"
+                                        style="width:100%;overflow:hidden;border-radius:10px;" 
+                                        sandbox="allow-forms allow-popups allow-same-origin allow-scripts allow-top-navigation-by-user-activation" 
+                                        src="https://embed.podcasts.apple.com/tz/podcast/mental-glow/id1667154547?i=1000600151307">
                                     </iframe>
                                 </div>
                             </div>
@@ -618,46 +693,6 @@
                         <div class="col-md-6 col-lg-4">
                             <div class="card resource-card guidebook-card">
                                 <div class="card-body">
-                                    <h5 class="card-title">Endure & Carry On Toolkit</h5>
-                                    <p class="card-text">Downloadable guides, worksheets and checklists to help you navigate difficult academic periods.</p>
-                                    <a href="#" class="resource-btn">Download PDF</a>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="col-md-6 col-lg-4">
-                            <div class="card resource-card guidebook-card">
-                                <div class="card-body">
-                                    <h5 class="card-title">Stress Management Guide</h5>
-                                    <p class="card-text">Comprehensive techniques to identify and manage stress during exam periods and beyond.</p>
-                                    <a href="#" class="resource-btn">Download PDF</a>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="col-md-6 col-lg-4">
-                            <div class="card resource-card guidebook-card">
-                                <div class="card-body">
-                                    <h5 class="card-title">Mindfulness & Meditation Guide</h5>
-                                    <p class="card-text">Introduction to mindfulness practices tailored for busy students with guided exercises.</p>
-                                    <a href="#" class="resource-btn">Download PDF</a>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="col-md-6 col-lg-4">
-                            <div class="card resource-card guidebook-card">
-                                <div class="card-body">
-                                    <h5 class="card-title">Crisis Support Handbook</h5>
-                                    <p class="card-text">Essential information on recognizing mental health crises and accessing immediate support.</p>
-                                    <a href="#" class="resource-btn">Download PDF</a>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="col-md-6 col-lg-4">
-                            <div class="card resource-card guidebook-card">
-                                <div class="card-body">
                                     <h5 class="card-title">Self-Care Planning Workbook</h5>
                                     <p class="card-text">Interactive workbook to help you create and maintain a personalized self-care routine.</p>
                                     <a href="#" class="resource-btn">Download PDF</a>
@@ -670,13 +705,21 @@
         </div>
     </section>
 
-    <!-- Call to Action -->
-    <section class="py-5 cta" style="background-color: var(--primary); color: white;">
+    <!-- Enhanced Call to Action -->
+    <section class="py-5 cta">
         <div class="container text-center">
             <h2>Need Additional Support?</h2>
-            <p class="lead">Our team is here to help you on your mental wellness journey.</p>
-            <a href="contact.html" class="btn btn-light btn-lg me-3">Get in Touch</a>
-            <a href="contact.html" class="btn btn-outline-light btn-lg">WhatsApp Helpline</a>
+            <p class="lead text-white">Our team is here to help you on your mental wellness journey.</p>
+            <div class="cta-buttons">
+                <a href="contact.html" class="btn btn-light btn-sm">
+                    <i class="fas fa-envelope"></i>
+                    Get in Touch
+                </a>
+                <a href="contact.html" class="btn btn-outline-light btn-sm">
+                    <i class="fab fa-whatsapp"></i>
+                    WhatsApp Helpline
+                </a>
+            </div>
         </div>
     </section>
 
@@ -691,7 +734,7 @@
                 <div class="col-lg-4 mb-4 mb-lg-0">
                     <h3 class="h5">Contact Us</h3>
                     <p>General Inquiries:<br>
-                    <a href="mailto:info@wellnesswithin.africa" class="text-white">info@wellnesswithin.africa</a><br>
+                    <a href="mailto:info@wellnesswithinhub.org" class="text-white">info@wellnesswithinhub.org</a><br>
                     <a href="tel:+255783885351" class="text-white" style="text-decoration:none;">+255 783 885 351</a></p>
                     <div class="mt-3">
                         <a href="#" class="btn btn-sm btn-outline-light">Start WhatsApp Chat →</a>
@@ -715,7 +758,7 @@
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
     <script>
-        // Add smooth transitions between tabs
+        // Enhanced tab functionality with smooth transitions
         document.addEventListener('DOMContentLoaded', function() {
             const tabButtons = document.querySelectorAll('[data-bs-toggle="tab"]');
             
@@ -731,96 +774,6 @@
                 });
             });
 
-            // Initialize podcast players
-            function initPodcastPlayer(playerId) {
-                const audio = document.getElementById(`audio${playerId}`);
-                const playPauseBtn = document.getElementById(`play-pause${playerId}`);
-                const skipBackBtn = document.getElementById(`skip-back${playerId}`);
-                const skipForwardBtn = document.getElementById(`skip-forward${playerId}`);
-                const volumeSlider = document.getElementById(`volume${playerId}`);
-                const progressContainer = document.querySelector(`.progress-container[data-audio="audio${playerId}"]`);
-                const progressBar = document.getElementById(`progress${playerId}`);
-                const currentTimeEl = document.getElementById(`current-time${playerId}`);
-                const totalTimeEl = document.getElementById(`total-time${playerId}`);
-                const playIcon = document.querySelector(`.play-icon[data-audio="audio${playerId}"]`);
-                
-                // Set total time
-                audio.addEventListener('loadedmetadata', function() {
-                    const totalMinutes = Math.floor(audio.duration / 60);
-                    const totalSeconds = Math.floor(audio.duration % 60);
-                    totalTimeEl.textContent = `${totalMinutes}:${totalSeconds < 10 ? '0' : ''}${totalSeconds}`;
-                });
-                
-                // Play/Pause functionality
-                playPauseBtn.addEventListener('click', function() {
-                    if (audio.paused) {
-                        audio.play();
-                        playPauseBtn.innerHTML = '<i class="fas fa-pause"></i>';
-                        playIcon.innerHTML = '<i class="fas fa-pause"></i>';
-                    } else {
-                        audio.pause();
-                        playPauseBtn.innerHTML = '<i class="fas fa-play"></i>';
-                        playIcon.innerHTML = '<i class="fas fa-play"></i>';
-                    }
-                });
-                
-                // Play icon functionality
-                playIcon.addEventListener('click', function() {
-                    if (audio.paused) {
-                        audio.play();
-                        playPauseBtn.innerHTML = '<i class="fas fa-pause"></i>';
-                        playIcon.innerHTML = '<i class="fas fa-pause"></i>';
-                    } else {
-                        audio.pause();
-                        playPauseBtn.innerHTML = '<i class="fas fa-play"></i>';
-                        playIcon.innerHTML = '<i class="fas fa-play"></i>';
-                    }
-                });
-                
-                // Skip back 10 seconds
-                skipBackBtn.addEventListener('click', function() {
-                    audio.currentTime = Math.max(0, audio.currentTime - 10);
-                });
-                
-                // Skip forward 30 seconds
-                skipForwardBtn.addEventListener('click', function() {
-                    audio.currentTime = Math.min(audio.duration, audio.currentTime + 30);
-                });
-                
-                // Volume control
-                volumeSlider.addEventListener('input', function() {
-                    audio.volume = volumeSlider.value;
-                });
-                
-                // Progress bar update
-                audio.addEventListener('timeupdate', function() {
-                    const progress = (audio.currentTime / audio.duration) * 100;
-                    progressBar.style.width = `${progress}%`;
-                    
-                    // Update current time display
-                    const currentMinutes = Math.floor(audio.currentTime / 60);
-                    const currentSeconds = Math.floor(audio.currentTime % 60);
-                    currentTimeEl.textContent = `${currentMinutes}:${currentSeconds < 10 ? '0' : ''}${currentSeconds}`;
-                });
-                
-                // Progress bar click to seek
-                progressContainer.addEventListener('click', function(e) {
-                    const rect = progressContainer.getBoundingClientRect();
-                    const pos = (e.pageX - rect.left) / rect.width;
-                    audio.currentTime = pos * audio.duration;
-                });
-                
-                // When audio ends, reset UI
-                audio.addEventListener('ended', function() {
-                    playPauseBtn.innerHTML = '<i class="fas fa-play"></i>';
-                    playIcon.innerHTML = '<i class="fas fa-play"></i>';
-                });
-            }
-            
-            // Initialize both players
-            initPodcastPlayer(1);
-            initPodcastPlayer(2);
-
             // Add click tracking for resource buttons (optional)
             document.querySelectorAll('.resource-btn, .download-btn').forEach(btn => {
                 btn.addEventListener('click', function(e) {
@@ -828,6 +781,48 @@
                     console.log('Resource clicked:', this.textContent);
                     // Here you could add analytics tracking or actual download functionality
                 });
+            });
+
+            // Add smooth scrolling for tab navigation on mobile
+            const tabContainer = document.querySelector('.custom-tabs');
+            if (tabContainer) {
+                tabContainer.addEventListener('wheel', function(e) {
+                    if (Math.abs(e.deltaY) < Math.abs(e.deltaX)) return;
+                    e.preventDefault();
+                    this.scrollLeft += e.deltaY;
+                }, { passive: false });
+            }
+
+            // Auto-scroll active tab into view on mobile
+            function scrollActiveTabIntoView() {
+                const activeTab = document.querySelector('.custom-tabs .nav-link.active');
+                const tabContainer = document.querySelector('.custom-tabs');
+                
+                if (activeTab && tabContainer && window.innerWidth <= 768) {
+                    const containerRect = tabContainer.getBoundingClientRect();
+                    const activeTabRect = activeTab.getBoundingClientRect();
+                    
+                    if (activeTabRect.right > containerRect.right || activeTabRect.left < containerRect.left) {
+                        const scrollLeft = activeTab.offsetLeft - (tabContainer.offsetWidth / 2) + (activeTab.offsetWidth / 2);
+                        tabContainer.scrollTo({
+                            left: scrollLeft,
+                            behavior: 'smooth'
+                        });
+                    }
+                }
+            }
+
+            // Call on page load and tab change
+            scrollActiveTabIntoView();
+            tabButtons.forEach(button => {
+                button.addEventListener('shown.bs.tab', scrollActiveTabIntoView);
+            });
+
+            // Handle window resize
+            let resizeTimeout;
+            window.addEventListener('resize', function() {
+                clearTimeout(resizeTimeout);
+                resizeTimeout = setTimeout(scrollActiveTabIntoView, 250);
             });
         });
     </script>
