@@ -4,106 +4,609 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mindful Navigation | Wellness Within</title>
+    <link rel="icon" type="image/png" href="images/favicon.png">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
+        :root {
+            --primary: #5F6C59;
+            --primary-dark: #406057;
+            --secondary: #664234;
+            --tertiary: #7B9C8C;
+            --accent: #E9C46A;
+            --light: #f8f9fa;
+            --white: #ffffff;
+            --text-muted: #6c757d;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        /* Floating Background Elements */
+        .floating-elements {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        .floating-leaf {
+            position: absolute;
+            opacity: 0.1;
+            animation: float 20s infinite linear;
+        }
+
+        .floating-leaf:nth-child(1) {
+            top: 10%;
+            left: 10%;
+            animation-delay: 0s;
+            font-size: 2rem;
+            color: var(--primary);
+        }
+
+        .floating-leaf:nth-child(2) {
+            top: 20%;
+            right: 15%;
+            animation-delay: -5s;
+            font-size: 1.5rem;
+            color: var(--tertiary);
+        }
+
+        .floating-leaf:nth-child(3) {
+            bottom: 30%;
+            left: 20%;
+            animation-delay: -10s;
+            font-size: 2.5rem;
+            color: var(--accent);
+        }
+
+        .floating-leaf:nth-child(4) {
+            bottom: 20%;
+            right: 20%;
+            animation-delay: -15s;
+            font-size: 1.8rem;
+            color: var(--primary);
+        }
+
+        @keyframes float {
+            0% { transform: translateY(0px) rotate(0deg); }
+            33% { transform: translateY(-20px) rotate(120deg); }
+            66% { transform: translateY(10px) rotate(240deg); }
+            100% { transform: translateY(0px) rotate(360deg); }
+        }
+
+        /* Main Container */
         .not-found-container {
-            background: #f8f9fa;
+            min-height: 100vh;
             display: flex;
             align-items: center;
+            justify-content: center;
             padding: 2rem;
+            position: relative;
+            z-index: 2;
         }
 
         .mindful-card {
-            background: white;
-            border-radius: 20px;
-            padding: 3rem;
+            background: var(--white);
+            border-radius: 25px;
+            padding: 4rem 3rem;
             text-align: center;
             margin: 0 auto;
-            max-width: 600px;
-            box-shadow: 0 8px 30px rgba(92, 132, 120, 0.1);
-            border-left: 6px solid #5F6C59;
+            max-width: 700px;
+            width: 100%;
+            box-shadow: 
+                0 20px 60px rgba(95, 108, 89, 0.15),
+                0 8px 30px rgba(95, 108, 89, 0.1);
+            border: 1px solid rgba(95, 108, 89, 0.1);
+            position: relative;
+            overflow: hidden;
+            backdrop-filter: blur(10px);
+        }
+
+        .mindful-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 6px;
+            background: linear-gradient(90deg, var(--primary) 0%, var(--tertiary) 50%, var(--accent) 100%);
+        }
+
+        /* Enhanced Breathing Animation */
+        .breathing-container {
+            position: relative;
+            margin: 2rem auto 3rem;
+            width: 150px;
+            height: 150px;
         }
 
         .breathing-animation {
             width: 120px;
             height: 120px;
-            background: #5F6C59;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--tertiary) 100%);
             border-radius: 50%;
-            margin: 2rem auto;
-            animation: breathe 6s infinite ease-in-out;
+            margin: 15px auto;
+            animation: breathe 4s infinite ease-in-out;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 10px 30px rgba(95, 108, 89, 0.3);
+        }
+
+        .breathing-animation::before {
+            content: '';
+            position: absolute;
+            width: 140px;
+            height: 140px;
+            border: 2px solid var(--primary);
+            border-radius: 50%;
+            opacity: 0.3;
+            animation: pulse 4s infinite ease-in-out;
+        }
+
+        .breathing-animation::after {
+            content: '🌿';
+            font-size: 2.5rem;
+            animation: rotate 8s infinite linear;
         }
 
         @keyframes breathe {
-            0%, 100% { transform: scale(0.9); opacity: 0.8; }
-            50% { transform: scale(1.1); opacity: 1; }
+            0%, 100% { 
+                transform: scale(0.9); 
+                box-shadow: 0 10px 30px rgba(95, 108, 89, 0.3);
+            }
+            50% { 
+                transform: scale(1.1); 
+                box-shadow: 0 15px 40px rgba(95, 108, 89, 0.4);
+            }
         }
 
+        @keyframes pulse {
+            0%, 100% { transform: scale(0.8); opacity: 0.3; }
+            50% { transform: scale(1.2); opacity: 0.1; }
+        }
+
+        @keyframes rotate {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        /* Typography */
         .not-found-title {
-            color: #406057;
-            font-size: 2.5rem;
-            margin-bottom: 1rem;
-            font-weight: 600;
+            color: var(--primary-dark);
+            font-size: 3rem;
+            margin-bottom: 1.5rem;
+            font-weight: 700;
+            letter-spacing: -0.02em;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
         }
 
         .mindful-message {
-            color: #5F6C59;
-            font-size: 1.2rem;
-            line-height: 1.6;
-            margin: 2rem 0;
+            color: var(--primary);
+            font-size: 1.3rem;
+            line-height: 1.8;
+            margin: 2rem 0 3rem;
+            font-weight: 400;
         }
 
+        .mindful-benefits {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+            margin: 3rem 0;
+            text-align: left;
+        }
+
+        .benefit-item {
+            background: linear-gradient(135deg, #f8f9fa 0%, #ffffff 100%);
+            padding: 1.5rem;
+            border-radius: 15px;
+            border-left: 4px solid var(--accent);
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .benefit-item:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(95, 108, 89, 0.15);
+        }
+
+        .benefit-icon {
+            font-size: 1.5rem;
+            color: var(--primary);
+            min-width: 40px;
+        }
+
+        .benefit-text {
+            color: var(--primary-dark);
+            font-weight: 500;
+            font-size: 1rem;
+        }
+
+        /* Enhanced Navigation */
         .navigation-links {
             display: flex;
-            gap: 1rem;
+            gap: 1.5rem;
             justify-content: center;
             flex-wrap: wrap;
+            margin: 3rem 0 2rem;
         }
 
         .btn-mindful {
-            background: #5F6C59;
-            color: white !important;
-            padding: 12px 30px;
-            border-radius: 30px;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+            color: var(--white) !important;
+            padding: 15px 35px;
+            border-radius: 50px;
             text-decoration: none;
-            transition: all 0.3s ease;
+            transition: all 0.4s ease;
             border: 2px solid transparent;
+            font-weight: 600;
+            font-size: 1rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.75rem;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 8px 25px rgba(95, 108, 89, 0.25);
+        }
+
+        .btn-mindful::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+            transition: left 0.6s ease;
         }
 
         .btn-mindful:hover {
-            background: #406057;
-            transform: translateY(-2px);
-            box-shadow: 0 5px 15px rgba(92, 132, 120, 0.3);
+            transform: translateY(-3px);
+            box-shadow: 0 12px 35px rgba(95, 108, 89, 0.35);
+            color: var(--white) !important;
         }
 
-        .leaf-decoration {
-            position: absolute;
-            opacity: 0.1;
-            pointer-events: none;
+        .btn-mindful:hover::before {
+            left: 100%;
+        }
+
+        .btn-secondary {
+            background: linear-gradient(135deg, var(--tertiary) 0%, var(--primary) 100%);
+        }
+
+        /* Breathing Exercise Section */
+        .breathing-exercise {
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            padding: 2rem;
+            border-radius: 20px;
+            margin: 3rem 0;
+            border: 1px solid rgba(95, 108, 89, 0.1);
+        }
+
+        .breathing-instructions {
+            color: var(--primary-dark);
+            font-size: 1rem;
+            margin-bottom: 1rem;
+            font-weight: 500;
+        }
+
+        .breathing-counter {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary);
+            margin: 1rem 0;
+        }
+
+        .breathing-controls {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-top: 1.5rem;
+        }
+
+        .btn-breathing {
+            background: var(--accent);
+            color: var(--primary-dark);
+            border: none;
+            padding: 10px 20px;
+            border-radius: 25px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .btn-breathing:hover {
+            background: #f4c430;
+            transform: translateY(-2px);
+        }
+
+        /* Error Info */
+        .error-info {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            margin-top: 2rem;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(95, 108, 89, 0.1);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .mindful-card {
+                padding: 3rem 2rem;
+                margin: 1rem;
+            }
+
+            .not-found-title {
+                font-size: 2.2rem;
+            }
+
+            .mindful-message {
+                font-size: 1.1rem;
+            }
+
+            .mindful-benefits {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+
+            .benefit-item {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .navigation-links {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .btn-mindful {
+                width: 100%;
+                max-width: 280px;
+                justify-content: center;
+            }
+
+            .breathing-controls {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .floating-leaf {
+                display: none;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .not-found-title {
+                font-size: 1.8rem;
+            }
+
+            .breathing-animation {
+                width: 100px;
+                height: 100px;
+            }
+
+            .breathing-animation::after {
+                font-size: 2rem;
+            }
+        }
+
+        /* Accessibility */
+        @media (prefers-reduced-motion: reduce) {
+            .breathing-animation,
+            .floating-leaf,
+            .breathing-animation::before,
+            .breathing-animation::after {
+                animation: none;
+            }
+        }
+
+        /* Focus states for accessibility */
+        .btn-mindful:focus,
+        .btn-breathing:focus {
+            outline: 3px solid var(--accent);
+            outline-offset: 2px;
         }
     </style>
 </head>
 <body>
+    <!-- Floating Background Elements -->
+    <div class="floating-elements">
+        <div class="floating-leaf">🍃</div>
+        <div class="floating-leaf">🌿</div>
+        <div class="floating-leaf">🍃</div>
+        <div class="floating-leaf">🌱</div>
+    </div>
+
     <div class="not-found-container">
         <div class="mindful-card">
-            <div class="breathing-animation"></div>
+            <!-- Enhanced Breathing Animation -->
+            <div class="breathing-container">
+                <div class="breathing-animation"></div>
+            </div>
+
             <h1 class="not-found-title">Breathe. It's Okay.</h1>
+            
             <p class="mindful-message">
-                Sometimes we all feel a little lost. This moment of pause can be your opportunity to:<br>
-                ✨ Center yourself<br>
-                ✨ Release tension<br>
-                ✨ Choose your next step mindfully
+                Sometimes we all feel a little lost. This moment of pause can be your opportunity to reconnect with yourself and choose your next step mindfully.
             </p>
+
+            <!-- Interactive Breathing Exercise -->
+            <div class="breathing-exercise">
+                <div class="breathing-instructions">
+                    Take a moment for a quick breathing exercise
+                </div>
+                <div class="breathing-counter" id="breathingCounter">
+                    Ready to begin?
+                </div>
+                <div class="breathing-controls">
+                    <button class="btn-breathing" id="startBreathing">
+                        <i class="fas fa-play me-2"></i>Start Breathing
+                    </button>
+                    <button class="btn-breathing" id="stopBreathing" style="display: none;">
+                        <i class="fas fa-stop me-2"></i>Stop
+                    </button>
+                </div>
+            </div>
+
+            <!-- Enhanced Navigation -->
             <div class="navigation-links">
-                <a href="/" class="btn-mindful">
-                    <i class="fas fa-home"></i> Return Home
+                <a href="index.html" class="btn-mindful">
+                    <i class="fas fa-home"></i>
+                    Return Home
                 </a>
-                <a href="/resources.html" class="btn-mindful">
-                    <i class="fas fa-heart"></i> Wellness Resources
+                <a href="resources.html" class="btn-mindful btn-secondary">
+                    <i class="fas fa-heart"></i>
+                    Wellness Resources
+                </a>
+                <a href="contact.html" class="btn-mindful">
+                    <i class="fas fa-comments"></i>
+                    Get Support
                 </a>
             </div>
-            <p class="text-muted mt-4" style="color: #5F6C59;">
-                Error 404 · Page Not Found
-            </p>
+
+            <div class="error-info">
+                <p><strong>Error 404</strong> • Page Not Found</p>
+                <p class="mt-2">Don't worry, even getting lost can be part of the journey to wellness.</p>
+            </div>
         </div>
     </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const startBtn = document.getElementById('startBreathing');
+            const stopBtn = document.getElementById('stopBreathing');
+            const counter = document.getElementById('breathingCounter');
+            let breathingInterval;
+            let breathingActive = false;
+            let currentCycle = 0;
+
+            // Breathing exercise logic
+            function startBreathingExercise() {
+                if (breathingActive) return;
+                
+                breathingActive = true;
+                currentCycle = 0;
+                startBtn.style.display = 'none';
+                stopBtn.style.display = 'inline-block';
+
+                const phases = [
+                    { text: 'Breathe in...', duration: 4000 },
+                    { text: 'Hold...', duration: 2000 },
+                    { text: 'Breathe out...', duration: 6000 },
+                    { text: 'Rest...', duration: 2000 }
+                ];
+
+                let phaseIndex = 0;
+                let cycleCount = 0;
+
+                function nextPhase() {
+                    if (!breathingActive) return;
+
+                    counter.textContent = phases[phaseIndex].text;
+                    
+                    breathingInterval = setTimeout(() => {
+                        phaseIndex++;
+                        
+                        if (phaseIndex >= phases.length) {
+                            phaseIndex = 0;
+                            cycleCount++;
+                            
+                            if (cycleCount >= 3) {
+                                stopBreathingExercise();
+                                counter.textContent = 'Great job! You completed 3 cycles.';
+                                return;
+                            } else {
+                                counter.textContent = `Cycle ${cycleCount + 1} of 3`;
+                                setTimeout(nextPhase, 1000);
+                                return;
+                            }
+                        }
+                        
+                        nextPhase();
+                    }, phases[phaseIndex === 0 ? phases.length - 1 : phaseIndex - 1].duration);
+                }
+
+                counter.textContent = 'Starting in 3...';
+                setTimeout(() => {
+                    counter.textContent = 'Starting in 2...';
+                    setTimeout(() => {
+                        counter.textContent = 'Starting in 1...';
+                        setTimeout(() => {
+                            nextPhase();
+                        }, 1000);
+                    }, 1000);
+                }, 1000);
+            }
+
+            function stopBreathingExercise() {
+                breathingActive = false;
+                clearTimeout(breathingInterval);
+                startBtn.style.display = 'inline-block';
+                stopBtn.style.display = 'none';
+                counter.textContent = 'Ready to begin?';
+            }
+
+            startBtn.addEventListener('click', startBreathingExercise);
+            stopBtn.addEventListener('click', stopBreathingExercise);
+
+            // Add gentle parallax effect to floating elements
+            document.addEventListener('mousemove', function(e) {
+                const leaves = document.querySelectorAll('.floating-leaf');
+                const mouseX = e.clientX / window.innerWidth;
+                const mouseY = e.clientY / window.innerHeight;
+
+                leaves.forEach((leaf, index) => {
+                    const speed = (index + 1) * 0.5;
+                    const x = (mouseX - 0.5) * speed * 20;
+                    const y = (mouseY - 0.5) * speed * 20;
+                    leaf.style.transform = `translate(${x}px, ${y}px)`;
+                });
+            });
+
+            // Add intersection observer for animations when elements come into view
+            const observerOptions = {
+                threshold: 0.1,
+                rootMargin: '0px 0px -50px 0px'
+            };
+
+            const observer = new IntersectionObserver(function(entries) {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.opacity = '1';
+                        entry.target.style.transform = 'translateY(0)';
+                    }
+                });
+            }, observerOptions);
+
+            // Observe benefit items for staggered animation
+            document.querySelectorAll('.benefit-item').forEach((item, index) => {
+                item.style.opacity = '0';
+                item.style.transform = 'translateY(20px)';
+                item.style.transition = `opacity 0.6s ease ${index * 0.1}s, transform 0.6s ease ${index * 0.1}s`;
+                observer.observe(item);
+            });
+        });
+    </script>
 </body>
 </html>
